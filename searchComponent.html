@@ -1,0 +1,784 @@
+    <!-- ==========================================
+     CAMPUSNEST SEARCH
+========================================== -->
+
+<div class="search-wrapper" id="searchContainer">
+
+    <!-- ===========================
+         SEARCH TOP
+    ============================ -->
+
+    <div class="search-top">
+
+        <div class="search-input-wrapper">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search housing, roommates, jobs..."
+                autocomplete="off"
+            >
+
+        </div>
+                <section
+    id="searchSuggestions"
+    class="search-suggestions">
+</section>
+    </div>
+
+    <!-- ===========================
+         EXPANDABLE AREA
+    ============================ -->
+
+    <div class="search-expand" id="searchExpand">
+
+        <!-- =======================
+             RECENT SEARCHES
+        ======================== -->
+
+        <section
+            class="recent-search-container"
+            id="recentContainer"
+        >
+
+            <h3>Recent Searches</h3>
+
+            <ul id="recentSearches"></ul>
+
+        </section>
+
+        <!-- =======================
+             FILTER BAR
+        ======================== -->
+
+        <section class="search-bottom">
+
+            <!-- WHERE -->
+
+            <div
+    class="search-section"
+    id="locationFilter"
+>
+
+    <small>Where</small>
+
+    <strong id="locationValue">
+        Any Location
+    </strong>
+
+</div>
+
+            <div class="divider"></div>
+
+            <!-- UNIVERSITY -->
+
+            <div
+                class="search-section"
+                id="universityFilter"
+            >
+
+                <small>University</small>
+
+                <strong id="universityValue">
+
+                    Any University
+
+                </strong>
+
+            </div>
+
+            
+
+            <div class="divider"></div>
+
+            <!-- MOVE IN -->
+
+            <div
+                class="search-section"
+                id="moveInFilter"
+            >
+
+                <small>Move In</small>
+
+                <strong id="moveInValue">
+
+                    Any Date
+
+                </strong>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- BUDGET -->
+
+            <div
+                class="search-section"
+                id="budgetFilter"
+            >
+
+                <small>Budget</small>
+
+                <strong id="budgetValue">
+
+                    Any Price
+
+                </strong>
+
+            </div>
+
+            <!-- SEARCH BUTTON -->
+
+            <button
+                class="premium-search-btn"
+                id="searchButton"
+            >
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+        </section>
+
+        <!-- =======================
+     ADVANCED FILTERS
+======================= -->
+
+<!-- ==========================================
+     MORE FILTERS
+========================================== -->
+
+<section class="more-filters-wrapper" id="moreFiltersWrapper">
+
+    <!-- MORE FILTERS BUTTON -->
+
+    <button
+        type="button"
+        class="more-filters-toggle"
+        id="moreFiltersToggle"
+        aria-expanded="false"
+    >
+
+        <span>More Filters</span>
+
+        <i class="fa-solid fa-chevron-down"></i>
+
+    </button>
+
+
+    <!-- ADVANCED FILTERS -->
+
+    <div
+        class="advanced-filters"
+        id="advancedFilters"
+    >
+
+        <div class="advanced-filter-grid">
+
+
+            <!-- HOUSING TYPE -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="housingType"
+                id="housingTypeFilter"
+            >
+
+                <i class="fa-solid fa-house"></i>
+
+                <span id="housingTypeValue">
+                    Any Housing Type
+                </span>
+
+            </button>
+
+
+            <!-- GENDER -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="gender"
+                id="genderFilter"
+            >
+
+                <i class="fa-solid fa-user"></i>
+
+                <span id="genderValue">
+                    Any Gender
+                </span>
+
+            </button>
+
+
+            <!-- LIFESTYLE -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="lifestyle"
+                id="lifestyleFilter"
+            >
+
+                <i class="fa-solid fa-mug-hot"></i>
+
+                <span id="lifestyleValue">
+                    Any Lifestyle
+                </span>
+
+            </button>
+
+
+            <!-- PETS -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="pets"
+                id="petsFilter"
+            >
+
+                <i class="fa-solid fa-paw"></i>
+
+                <span id="petsValue">
+                    Any Pets
+                </span>
+
+            </button>
+
+
+            <!-- SMOKING -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="smoking"
+                id="smokingFilter"
+            >
+
+                <i class="fa-solid fa-ban-smoking"></i>
+
+                <span id="smokingValue">
+                    Any Smoking
+                </span>
+
+            </button>
+
+
+            <!-- FURNISHED -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="furnished"
+                id="furnishedFilter"
+            >
+
+                <i class="fa-solid fa-couch"></i>
+
+                <span id="furnishedValue">
+                    Any Furnishing
+                </span>
+
+            </button>
+
+
+            <!-- PARKING -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="parking"
+                id="parkingFilter"
+            >
+
+                <i class="fa-solid fa-square-parking"></i>
+
+                <span id="parkingValue">
+                    Any Parking
+                </span>
+
+            </button>
+
+
+            <!-- UTILITIES -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="utilities"
+                id="utilitiesFilter"
+            >
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <span id="utilitiesValue">
+                    Any Utilities
+                </span>
+
+            </button>
+
+
+            <!-- CATEGORY -->
+
+            <button
+                type="button"
+                class="advanced-filter"
+                data-filter="category"
+                id="categoryFilter"
+            >
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span id="categoryValue">
+                    All Categories
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =======================
+             RESULTS
+        ======================== -->
+
+        <section
+            class="search-results"
+            id="searchResults"
+        >
+
+        </section>
+
+    </div>
+
+</div>
+
+<div id="globalPopup" class="search-popup">
+
+    <div class="popup-header">
+
+        <h3 id="popupTitle">
+
+            Title
+
+        </h3>
+
+    </div>
+
+    <div id="popupContent">
+
+    <div class="popup-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            id="popupSearchInput"
+            type="text"
+            placeholder=""
+        >
+
+    </div>
+
+    <div
+        id="popupList"
+        class="popup-list"
+    ></div>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+     MOBILE SEARCH OVERLAY
+========================================== -->
+
+<!-- <div
+    class="mobile-search-overlay"
+    id="mobileOverlay"
+>
+
+</div> -->
+
+<!-- =====================================
+ MOBILE SEARCH OVERLAY
+====================================== -->
+
+<div id="mobileSearchOverlay">
+
+    <!-- ==========================================
+         MOBILE SEARCH HEADER
+    =========================================== -->
+
+    <div class="mobile-search-header">
+
+        <button
+            id="closeMobileSearch"
+            type="button"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <h2>Search</h2>
+
+    </div>
+
+
+    <!-- ==========================================
+         MOBILE SEARCH INPUT
+    =========================================== -->
+
+    <div class="mobile-search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            id="mobileSearchInput"
+            type="text"
+            placeholder="Search housing, roommates, jobs..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <!-- ==========================================
+         MOBILE SEARCH SUGGESTIONS
+    =========================================== -->
+
+    <section
+        id="mobileSearchSuggestions"
+        class="search-suggestions"
+    ></section>
+
+
+    <!-- ==========================================
+         MOBILE RECENT SEARCHES
+    =========================================== -->
+
+    <section id="mobileRecentContainer">
+
+        <h3>Recent Searches</h3>
+
+        <ul id="mobileRecentSearches"></ul>
+
+    </section>
+
+
+    <!-- ==========================================
+         MOBILE SEARCH RESULTS
+    =========================================== -->
+
+    <section
+        id="mobileSearchResults"
+        class="search-results"
+    ></section>
+
+
+    <!-- ==========================================
+         MOBILE FILTERS
+    ========================================== -->
+
+    <div id="mobileFilters">
+
+    <!-- ==========================================
+         MOBILE MAIN FILTERS
+    =========================================== -->
+
+    <div class="mobile-filter-list">
+
+
+        <!-- LOCATION -->
+
+        <button
+            type="button"
+            class="mobile-filter-card"
+            id="mobileLocation"
+        >
+
+            <small>Where</small>
+
+            <strong id="mobileLocationValue">
+                Any Location
+            </strong>
+
+        </button>
+
+
+        <!-- UNIVERSITY -->
+
+        <button
+            type="button"
+            class="mobile-filter-card"
+            id="mobileUniversity"
+        >
+
+            <small>University</small>
+
+            <strong id="mobileUniversityValue">
+                Any University
+            </strong>
+
+        </button>
+
+
+        <!-- MOVE IN -->
+
+        <button
+            type="button"
+            class="mobile-filter-card"
+            id="mobileMoveIn"
+        >
+
+            <small>Move In</small>
+
+            <strong id="mobileMoveInValue">
+                Any Date
+            </strong>
+
+        </button>
+
+
+        <!-- BUDGET -->
+
+        <button
+            type="button"
+            class="mobile-filter-card"
+            id="mobileBudget"
+        >
+
+            <small>Budget</small>
+
+            <strong id="mobileBudgetValue">
+                Any Price
+            </strong>
+
+        </button>
+
+
+        <!-- ======================================
+             MOBILE MORE FILTERS BUTTON
+        ======================================= -->
+
+        <button
+            type="button"
+            class="mobile-more-filters-toggle"
+            id="mobileMoreFiltersToggle"
+            aria-expanded="false"
+        >
+
+            <span>More Filters</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </button>
+
+
+        <!-- ======================================
+             MOBILE ADVANCED FILTERS
+        ======================================= -->
+
+        <div
+            id="mobileAdvancedFilters"
+            class="mobile-advanced-filters"
+        >
+
+
+            <!-- HOUSING TYPE -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="housingType"
+                id="mobileHousingType"
+            >
+
+                <small>Housing Type</small>
+
+                <strong id="mobileHousingTypeValue">
+                    Any Housing Type
+                </strong>
+
+            </button>
+
+
+            <!-- GENDER -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="gender"
+                id="mobileGender"
+            >
+
+                <small>Gender</small>
+
+                <strong id="mobileGenderValue">
+                    Any Gender
+                </strong>
+
+            </button>
+
+
+            <!-- LIFESTYLE -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="lifestyle"
+                id="mobileLifestyle"
+            >
+
+                <small>Lifestyle</small>
+
+                <strong id="mobileLifestyleValue">
+                    Any Lifestyle
+                </strong>
+
+            </button>
+
+
+            <!-- PETS -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="pets"
+                id="mobilePets"
+            >
+
+                <small>Pets</small>
+
+                <strong id="mobilePetsValue">
+                    Any Pets
+                </strong>
+
+            </button>
+
+
+            <!-- SMOKING -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="smoking"
+                id="mobileSmoking"
+            >
+
+                <small>Smoking</small>
+
+                <strong id="mobileSmokingValue">
+                    Any Smoking
+                </strong>
+
+            </button>
+
+
+            <!-- FURNISHED -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="furnished"
+                id="mobileFurnished"
+            >
+
+                <small>Furnishing</small>
+
+                <strong id="mobileFurnishedValue">
+                    Any Furnishing
+                </strong>
+
+            </button>
+
+
+            <!-- PARKING -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="parking"
+                id="mobileParking"
+            >
+
+                <small>Parking</small>
+
+                <strong id="mobileParkingValue">
+                    Any Parking
+                </strong>
+
+            </button>
+
+
+            <!-- UTILITIES -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="utilities"
+                id="mobileUtilities"
+            >
+
+                <small>Utilities</small>
+
+                <strong id="mobileUtilitiesValue">
+                    Any Utilities
+                </strong>
+
+            </button>
+
+
+            <!-- CATEGORY -->
+
+            <button
+                type="button"
+                class="mobile-filter-card"
+                data-filter="category"
+                id="mobileCategory"
+            >
+
+                <small>Category</small>
+
+                <strong id="mobileCategoryValue">
+                    All Categories
+                </strong>
+
+            </button>
+
+
+        </div>
+
+
+        <!-- ======================================
+             MOBILE SEARCH BUTTON
+        ======================================= -->
+
+        <button
+            type="button"
+            class="mobile-search-button"
+            id="mobileSearchButton"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <span>Search</span>
+
+        </button>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- END search-overlay -->

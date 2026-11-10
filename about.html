@@ -1,0 +1,22 @@
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+
+    console.log("Checking CampusNest Supabase Auth...");
+
+    const { data, error } = await campusSupabase.auth.getUser();
+
+    if (error) {
+        console.error("Auth check error:", error);
+        return;
+    }
+
+    if (data.user) {
+        console.log("Logged in user:", data.user);
+        console.log("User ID:", data.user.id);
+        console.log("User email:", data.user.email);
+    } else {
+        console.log("No user is currently logged in.");
+    }
+
+});
+</script>

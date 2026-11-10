@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | CampusNest</title>
+
+    <link rel="icon" href="assets/images/sitelogo.png">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+        :root {
+            --cn-blue: #2563eb;
+            --cn-blue-dark: #1d4ed8;
+            --cn-blue-soft: #eff6ff;
+            --cn-ink: #172033;
+            --cn-muted: #718096;
+            --cn-border: #e8edf4;
+            --cn-bg: #f7f9fc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--cn-bg);
+            color: var(--cn-ink);
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard-header {
+            background: #fff;
+            border-bottom: 1px solid var(--cn-border);
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand img {
+            width: 150px;
+            max-height: 48px;
+            object-fit: contain;
+        }
+
+        .logout-button {
+            border: 1px solid var(--cn-border);
+            background: #fff;
+            color: var(--cn-ink);
+            padding: 11px 17px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .logout-button:hover {
+            background: var(--cn-blue-soft);
+            color: var(--cn-blue);
+        }
+
+        .dashboard-container {
+            width: min(1050px, 90%);
+            margin: 55px auto;
+        }
+
+        .welcome-section {
+            margin-bottom: 32px;
+        }
+
+        .eyebrow {
+            color: var(--cn-blue);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .welcome-section h1 {
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            color: var(--cn-muted);
+            line-height: 1.7;
+        }
+
+        .student-email {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: #fff;
+            border: 1px solid var(--cn-border);
+            border-radius: 16px;
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(23, 32, 51, .07);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--cn-blue-soft);
+            color: var(--cn-blue);
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card h2 {
+            font-size: 19px;
+            margin-bottom: 9px;
+        }
+
+        .dashboard-card p {
+            color: var(--cn-muted);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--cn-blue);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .card-link i {
+            margin-left: 6px;
+        }
+
+        .test-notice {
+            margin-top: 25px;
+            padding: 16px 18px;
+            background: var(--cn-blue-soft);
+            border: 1px solid #dbeafe;
+            border-radius: 12px;
+            color: #1e40af;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .loading-screen {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .loading-screen i {
+            color: var(--cn-blue);
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .loading-screen p {
+            color: var(--cn-muted);
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 650px) {
+            .dashboard-header {
+                padding: 15px 5%;
+            }
+
+            .brand img {
+                width: 125px;
+            }
+
+            .dashboard-container {
+                margin: 35px auto;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-card {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading -->
+    <div class="loading-screen" id="dashboardLoading">
+        <div>
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Loading your student dashboard...</p>
+        </div>
+    </div>
+
+
+    <!-- Dashboard -->
+    <div id="studentDashboard" hidden>
+
+        <header class="dashboard-header">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="assets/images/sitelogo.png"
+                    alt="CampusNest"
+                >
+            </a>
+
+            <button
+                type="button"
+                class="logout-button"
+                id="studentLogoutButton"
+            >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Sign out
+            </button>
+
+        </header>
+
+
+        <main class="dashboard-container">
+
+            <section class="welcome-section">
+
+                <div class="eyebrow">STUDENT TEST DASHBOARD</div>
+
+                <h1>
+                    Welcome, <span id="studentName">Student</span>!
+                </h1>
+
+                <p>
+                    Your CampusNest student account is ready.
+                    Choose where you would like to go.
+                </p>
+
+                <p class="student-email" id="studentEmail"></p>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <!-- Messages -->
+                <a href="chat.html" class="dashboard-card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+
+                    <h2>My Messages</h2>
+
+                    <p>
+                        Open your inbox and communicate with
+                        landlords about housing.
+                    </p>
+
+                    <span class="card-link">
+                        Open messages
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </a>
+
+
+                <!-- Housing -->
+                <a href="housing.html" class="dashboard-card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+
+                    <h2>Find Housing</h2>
+
+                    <p>
+                        Explore available student housing
+                        and find a place to call home.
+                    </p>
+
+                    <span class="card-link">
+                        Explore housing
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </a>
+
+            </section>
+
+
+            <div class="test-notice">
+                <strong>Testing page:</strong>
+                This is a temporary dashboard created to help us
+                complete CampusNest messaging tests. It will
+                eventually be replaced by the full student dashboard.
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase/supabaseClient.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+
+            const loading = document.getElementById("dashboardLoading");
+            const dashboard = document.getElementById("studentDashboard");
+
+            try {
+
+                // Check authenticated user
+                const {
+                    data: { user },
+                    error: authError
+                } = await campusSupabase.auth.getUser();
+
+                if (authError || !user) {
+                    window.location.href =
+                        "student-login.html?redirect=student-test-dashboard.html";
+                    return;
+                }
+
+
+                // Get student profile
+                const {
+                    data: profile,
+                    error: profileError
+                } = await campusSupabase
+                    .from("profiles")
+                    .select("first_name,last_name,email,role")
+                    .eq("id", user.id)
+                    .maybeSingle();
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+                // Only students can access this page
+                if (
+                    !profile ||
+                    String(profile.role).toLowerCase() !== "student"
+                ) {
+
+                    await campusSupabase.auth.signOut();
+
+                    window.location.href = "student-login.html";
+                    return;
+                }
+
+
+                // Display student information
+                const fullName = [
+                    profile.first_name,
+                    profile.last_name
+                ].filter(Boolean).join(" ");
+
+                document.getElementById("studentName").textContent =
+                    fullName || "Student";
+
+                document.getElementById("studentEmail").textContent =
+                    profile.email || user.email || "";
+
+
+                // Show dashboard
+                loading.hidden = true;
+                dashboard.hidden = false;
+
+                console.log("Student test dashboard loaded successfully.");
+
+            } catch (error) {
+
+                console.error("Student dashboard error:", error);
+
+                loading.innerHTML = `
+                    <div>
+                        <p>We couldn't load your student dashboard.</p>
+                        <p>Please refresh the page or sign in again.</p>
+                    </div>
+                `;
+
+            }
+
+
+            // Sign out
+            document.getElementById("studentLogoutButton")
+                .addEventListener("click", async () => {
+
+                    const button =
+                        document.getElementById("studentLogoutButton");
+
+                    button.disabled = true;
+                    button.textContent = "Signing out...";
+
+                    const { error } =
+                        await campusSupabase.auth.signOut();
+
+                    if (error) {
+                        console.error("Sign out error:", error);
+                        button.disabled = false;
+                        button.textContent = "Sign out";
+                        alert("Unable to sign out. Please try again.");
+                        return;
+                    }
+
+                    window.location.href = "student-login.html";
+
+                });
+
+        });
+    </script>
+
+</body>
+</html>

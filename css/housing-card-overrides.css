@@ -1,0 +1,327 @@
+
+/* =========================================================
+   CAMPUSNEST — HOUSING CARD DESIGN
+   PHASE 6.4.1
+   ========================================================= */
+
+.housing-listings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 24px;
+    min-width: 0;
+}
+
+/* Main card */
+.housing-listing-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.045);
+    transition:
+        box-shadow 220ms ease,
+        border-color 220ms ease,
+        transform 220ms ease;
+}
+
+@media (hover: hover) {
+    .housing-listing-card:hover {
+        transform: translateY(-3px);
+        border-color: #dbe3ee;
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
+    }
+}
+
+/* Consistent image proportions */
+.housing-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.housing-card-image-real {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 350ms ease;
+}
+
+@media (hover: hover) {
+    .housing-listing-card:hover .housing-card-image-real {
+        transform: scale(1.035);
+    }
+}
+
+/* Image fallback */
+.housing-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #eff6ff, #f8fafc);
+    color: #64748b;
+}
+
+.housing-card-placeholder i {
+    font-size: 34px;
+    color: #94a3b8;
+}
+
+.housing-card-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Favorite button */
+.housing-card-heart {
+    width: 42px;
+    height: 42px;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.96);
+    color: #334155;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.12);
+    cursor: pointer;
+}
+
+.housing-card-heart.saved {
+    color: #dc2626;
+}
+
+.housing-card-heart:focus-visible,
+.view-housing-btn:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.4);
+    outline-offset: 3px;
+}
+
+/* Verified indicator */
+.housing-verified-badge {
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+    border: 1px solid rgba(220, 252, 231, 0.9);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+    color: #15803d;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Card content */
+.housing-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 19px;
+}
+
+.housing-card-heading h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: 0 0 7px;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.housing-card-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.housing-card-location i {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: #64748b;
+}
+
+/* University */
+.housing-card-university {
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 12px;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.housing-card-university i {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: #2563eb;
+}
+
+/* Property feature chips */
+.housing-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.housing-card-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    padding: 6px 9px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 11px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.housing-card-meta span i {
+    flex-shrink: 0;
+    color: #64748b;
+}
+
+/* Price and action footer */
+.housing-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 17px;
+    border-top: 1px solid #eef2f7;
+    margin-top: 20px;
+}
+
+.housing-price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.housing-price strong {
+    color: #111827;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.housing-price span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.view-housing-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid #dbeafe;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+@media (hover: hover) {
+    .view-housing-btn:hover {
+        border-color: #bfdbfe;
+        background: #dbeafe;
+    }
+}
+
+/* Tablet: use the full content width */
+@media (max-width: 1100px) {
+    .housing-discovery-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .housing-listings {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .housing-map {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .housing-listings {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .housing-card-image-wrapper {
+        aspect-ratio: 4 / 3;
+    }
+
+    .housing-card-content {
+        padding: 17px;
+    }
+
+    .housing-card-heading h3 {
+        font-size: 17px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+    .housing-card-content {
+        padding: 14px;
+    }
+
+    .housing-price strong {
+        font-size: 19px;
+    }
+
+    .housing-card-bottom {
+        gap: 10px;
+    }
+}
+
+/* Accessible reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .housing-listing-card,
+    .housing-card-image-real,
+    .housing-card-heart,
+    .view-housing-btn {
+        transition: none !important;
+    }
+
+    .housing-listing-card:hover {
+        transform: none;
+    }
+}

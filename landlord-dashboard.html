@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Landlord Dashboard | CampusNest</title>
+
+    <link
+        rel="icon"
+        href="assets/images/sitelogo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="css/landlord/landlord-dashboard.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="landlord-app">
+
+    <!-- MOBILE SIDEBAR BACKDROP -->
+    <div
+        class="sidebar-backdrop"
+        id="sidebarBackdrop"
+        aria-hidden="true"
+    ></div>
+
+    <!-- SIDEBAR -->
+    <aside
+        class="landlord-sidebar"
+        id="landlordSidebar"
+        aria-label="Landlord dashboard navigation"
+    >
+
+        <a href="index.html" class="sidebar-brand">
+            <img
+                src="assets/images/sitelogo.png"
+                alt="CampusNest"
+            >
+        </a>
+
+        <div class="sidebar-account">
+            <div class="sidebar-avatar" aria-hidden="true">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="sidebar-account-details">
+                <strong id="sidebarLandlordName">Landlord</strong>
+                <span>Property owner</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-navigation">
+
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <button
+                type="button"
+                class="sidebar-link is-active"
+                data-dashboard-nav="overview"
+                aria-current="page"
+            >
+                <i class="fa-solid fa-house"></i>
+                <span>Overview</span>
+            </button>
+
+            <button
+                type="button"
+                class="sidebar-link"
+                data-dashboard-nav="properties"
+            >
+                <i class="fa-solid fa-building"></i>
+                <span>My Properties</span>
+            </button>
+
+            <button
+                type="button"
+                class="sidebar-link"
+                data-dashboard-nav="add-property"
+            >
+                <i class="fa-solid fa-circle-plus"></i>
+                <span>Add Property</span>
+            </button>
+
+            <button
+                type="button"
+                class="sidebar-link"
+                data-dashboard-nav="messages"
+            >
+                <i class="fa-solid fa-comments"></i>
+                <span>Messages</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-help">
+                <i class="fa-solid fa-circle-info"></i>
+
+                <div>
+                    <strong>Need help?</strong>
+                    <span>We're here to help you.</span>
+                </div>
+            </div>
+
+            <button
+                type="button"
+                class="sidebar-logout"
+                id="sidebarLogoutButton"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sign Out</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN DASHBOARD AREA -->
+    <div class="dashboard-main">
+
+        <!-- TOP NAVIGATION -->
+        <header class="dashboard-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Open navigation menu"
+                    aria-controls="landlordSidebar"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="topbar-heading">
+                    <span>LANDLORD PORTAL</span>
+                    <h2>Dashboard</h2>
+                </div>
+
+            </div>
+
+            <div class="topbar-user">
+
+                <div class="topbar-user-info">
+                    <strong id="landlordName">Landlord</strong>
+                    <span id="landlordEmail">Loading...</span>
+                </div>
+
+                <div class="topbar-avatar" aria-hidden="true">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="topbar-logout"
+                    aria-label="Sign out"
+                    title="Sign out"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+    <main
+        class="dashboard"
+        id="dashboardContent"
+        style="display: none;"
+    >
+
+
+        <section class="welcome">
+
+            <h1>
+                Welcome back, <span id="welcomeName">Landlord</span>
+            </h1>
+
+            <p>
+                Manage your CampusNest properties
+                and conversations with students.
+            </p>
+
+        </section>
+
+
+
+        
+<!-- ==========================================
+     LANDLORD DASHBOARD OVERVIEW
+=========================================== -->
+
+<section
+    class="overview-section"
+    id="landlordOverview"
+    aria-labelledby="overviewHeading"
+>
+
+    <div class="overview-heading">
+        <div>
+            <span class="overview-eyebrow">YOUR WORKSPACE</span>
+            <h2 id="overviewHeading">Overview</h2>
+            <p>Here's what's happening with your properties.</p>
+        </div>
+
+        <button
+            type="button"
+            class="dashboard-button"
+            id="overviewAddPropertyButton"
+        >
+            <i class="fa-solid fa-plus"></i>
+            Add Property
+        </button>
+    </div>
+
+    <!-- STATISTICS -->
+    <div class="overview-stats">
+
+        <article class="overview-stat-card">
+            <div class="overview-stat-top">
+                <span>Total Properties</span>
+                <span class="overview-stat-icon icon-blue">
+                    <i class="fa-solid fa-building"></i>
+                </span>
+            </div>
+
+            <strong id="totalPropertiesCount">—</strong>
+            <p>Properties in your portfolio</p>
+        </article>
+
+        <article class="overview-stat-card">
+            <div class="overview-stat-top">
+                <span>Active Listings</span>
+                <span class="overview-stat-icon icon-green">
+                    <i class="fa-solid fa-house-circle-check"></i>
+                </span>
+            </div>
+
+            <strong id="activePropertiesCount">—</strong>
+            <p>Currently visible to students</p>
+        </article>
+
+        <article class="overview-stat-card">
+            <div class="overview-stat-top">
+                <span>Inactive Listings</span>
+                <span class="overview-stat-icon icon-orange">
+                    <i class="fa-solid fa-house-circle-xmark"></i>
+                </span>
+            </div>
+
+            <strong id="inactivePropertiesCount">—</strong>
+            <p>Not currently visible to students</p>
+        </article>
+
+        <article class="overview-stat-card">
+            <div class="overview-stat-top">
+                <span>Unread Messages</span>
+                <span class="overview-stat-icon icon-purple">
+                    <i class="fa-solid fa-envelope"></i>
+                </span>
+            </div>
+
+            <strong id="unreadMessagesCount">—</strong>
+            <p>Messages waiting for your response</p>
+        </article>
+
+    </div>
+
+    
+<!-- ==========================================
+     PROPERTY ANALYTICS
+     PHASE 7.7.3.4
+=========================================== -->
+
+<section class="property-analytics" id="propertyAnalytics">
+
+    <div class="analytics-heading">
+        <div>
+            <span class="overview-eyebrow">PROPERTY PERFORMANCE</span>
+            <h3>Property Analytics</h3>
+            <p>Understand how students discover your properties.</p>
+        </div>
+
+        <select
+            id="analyticsPeriod"
+            aria-label="Select analytics period"
+        >
+            <option value="7">Last 7 days</option>
+            <option value="30">Last 30 days</option>
+        </select>
+    </div>
+
+    <div class="analytics-summary">
+
+        <article class="analytics-summary-card">
+            <span>Total Property Views</span>
+            <strong id="analyticsTotalViews">—</strong>
+            <small>All your housing properties</small>
+        </article>
+
+        <article class="analytics-summary-card">
+            <span>Views Today</span>
+            <strong id="analyticsViewsToday">—</strong>
+            <small>Views recorded today</small>
+        </article>
+
+    </div>
+
+    <div class="analytics-content">
+
+        <section class="overview-panel analytics-chart-panel">
+
+            <div class="overview-panel-heading">
+                <div>
+                    <h3>Views Over Time</h3>
+                    <p>Daily property views</p>
+                </div>
+            </div>
+
+            <div
+                id="propertyViewsChart"
+                class="property-views-chart"
+                aria-live="polite"
+            >
+                <p class="analytics-loading">
+                    Loading analytics...
+                </p>
+            </div>
+
+        </section>
+
+        <section class="overview-panel analytics-ranking-panel">
+
+            <div class="overview-panel-heading">
+                <div>
+                    <h3>Property Performance</h3>
+                    <p>Your most viewed properties</p>
+                </div>
+            </div>
+
+            <div
+                id="propertyPerformanceList"
+                class="property-performance-list"
+                aria-live="polite"
+            >
+                <p class="analytics-loading">
+                    Loading property performance...
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+        <!-- ==========================================
+         SAVED PROPERTY ANALYTICS
+         PHASE 7.7.5.2
+    =========================================== -->
+
+    <div class="analytics-summary property-saves-summary">
+
+        <article class="analytics-summary-card">
+            <span>Total Property Saves</span>
+            <strong id="analyticsTotalSaves">—</strong>
+            <small>Times students saved your properties</small>
+        </article>
+
+        <article class="analytics-summary-card">
+            <span>Most Saved Property</span>
+            <strong
+                id="analyticsMostSavedProperty"
+                class="analytics-featured-property"
+            >Loading...</strong>
+            <small id="analyticsMostSavedCount">
+                Loading save count...
+            </small>
+        </article>
+
+    </div>
+
+    <section class="overview-panel property-saves-ranking-panel">
+
+        <div class="overview-panel-heading">
+            <div>
+                <h3>Property Save Rankings</h3>
+                <p>See which properties students are saving most.</p>
+            </div>
+        </div>
+
+        <div
+            id="propertySavesRankingList"
+            class="property-performance-list"
+            aria-live="polite"
+        >
+            <p class="analytics-loading">
+                Loading saved property rankings...
+            </p>
+        </div>
+
+    </section>
+
+    <p
+        id="analyticsError"
+        class="analytics-error"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+</section>
+
+    <!-- OVERVIEW CONTENT -->
+    <div class="overview-content-grid">
+
+        <!-- RECENT PROPERTIES -->
+        <section class="overview-panel">
+            <div class="overview-panel-heading">
+                <div>
+                    <h3>Recent Properties</h3>
+                    <p>Your latest housing listings</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="overview-text-button"
+                    id="overviewViewPropertiesButton"
+                >
+                    View all
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div
+                id="overviewRecentProperties"
+                class="overview-recent-properties"
+                aria-live="polite"
+            >
+                <div class="overview-empty-state">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Your recent properties will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECENT MESSAGES -->
+        <section class="overview-panel">
+            <div class="overview-panel-heading">
+                <div>
+                    <h3>Recent Messages</h3>
+                    <p>Latest conversations with students</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="overview-text-button"
+                    id="overviewViewMessagesButton"
+                >
+                    View all
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div
+                id="overviewRecentMessages"
+                class="overview-recent-messages"
+                aria-live="polite"
+            >
+                <div class="overview-empty-state">
+                    <i class="fa-solid fa-comments"></i>
+                    <p>Your recent conversations will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <section class="overview-quick-actions">
+
+        <div class="overview-panel-heading">
+            <div>
+                <h3>Quick Actions</h3>
+                <p>Manage your landlord workspace</p>
+            </div>
+        </div>
+
+        <div class="quick-actions-grid">
+
+            <button
+                type="button"
+                class="quick-action-card"
+                id="quickAddPropertyButton"
+            >
+                <span class="quick-action-icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                    <strong>Add a Property</strong>
+                    <small>Create a new housing listing</small>
+                </span>
+
+                <i class="fa-solid fa-arrow-right quick-action-arrow"></i>
+            </button>
+
+            <button
+                type="button"
+                class="quick-action-card"
+                id="quickViewPropertiesButton"
+            >
+                <span class="quick-action-icon">
+                    <i class="fa-solid fa-building"></i>
+                </span>
+
+                <span>
+                    <strong>Manage Properties</strong>
+                    <small>Update your existing listings</small>
+                </span>
+
+                <i class="fa-solid fa-arrow-right quick-action-arrow"></i>
+            </button>
+
+            <button
+                type="button"
+                class="quick-action-card"
+                id="quickOpenMessagesButton"
+            >
+                <span class="quick-action-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </span>
+
+                <span>
+                    <strong>Open Messages</strong>
+                    <small>Connect with interested students</small>
+                </span>
+
+                <i class="fa-solid fa-arrow-right quick-action-arrow"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+        
+<section
+    class="properties-section"
+    id="landlordPropertiesSection"
+    aria-labelledby="propertiesHeading"
+>
+
+<div class="properties-heading">
+    <div>
+        <h2 id="propertiesHeading">My Properties</h2>
+        <p>Manage the housing you have listed on CampusNest.</p>
+    </div>
+
+    <button
+        type="button"
+        class="dashboard-button"
+        id="addPropertyButton"
+        aria-controls="addPropertyForm"
+        aria-expanded="false"
+    >
+        <span aria-hidden="true">+</span>
+        Add Property
+    </button>
+</div>
+
+
+<form id="addPropertyForm" class="add-property-form" hidden>
+    <div class="form-heading">
+    <div>
+        <span
+            id="propertyFormMode"
+            class="property-form-mode"
+            hidden
+        >
+            EDITING PROPERTY
+        </span>
+
+        <h3 id="propertyFormTitle">Add a New Property</h3>
+
+        <p id="propertyFormDescription">
+            Share the details students need to find their next home.
+        </p>
+    </div>
+
+    <button
+        type="button"
+        id="cancelAddPropertyButton"
+        class="dashboard-button dashboard-button-secondary"
+    >
+        Cancel
+    </button>
+</div>
+
+<input
+    type="hidden"
+    id="editListingId"
+    name="edit_listing_id"
+    value=""
+>
+
+    <div class="form-grid">
+        <div class="form-field form-field-full">
+            <label for="propertyTitle">Property title *</label>
+            <input
+                type="text"
+                id="propertyTitle"
+                name="title"
+                maxlength="120"
+                placeholder="e.g. Modern Room Near UCalgary"
+                required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="propertyLocation">Location in Calgary *</label>
+            <input
+                type="text"
+                id="propertyLocation"
+                name="location"
+                maxlength="160"
+                placeholder="e.g. Brentwood, Calgary"
+                required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="propertyUniversity">Nearby university</label>
+            <input
+                type="text"
+                id="propertyUniversity"
+                name="university"
+                maxlength="160"
+                placeholder="e.g. University of Calgary"
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="propertyHousingType">Housing type *</label>
+            <select id="propertyHousingType" name="housing_type" required>
+                <option value="">Select housing type</option>
+                <option value="Private Room">Private Room</option>
+                <option value="Shared Room">Shared Room</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Studio">Studio</option>
+                <option value="House">House</option>
+                <option value="Basement Suite">Basement Suite</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyBudget">Monthly rent (CAD) *</label>
+            <input
+                type="number"
+                id="propertyBudget"
+                name="budget"
+                min="1"
+                max="100000"
+                step="0.01"
+                placeholder="e.g. 850"
+                required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="propertyMoveIn">Available from *</label>
+            <input
+                type="date"
+                id="propertyMoveIn"
+                name="move_in"
+                required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="propertyAvailability">Availability *</label>
+            <select id="propertyAvailability" name="availability" required>
+                <option value="">Select availability</option>
+                <option value="Available">Available</option>
+                <option value="Coming Soon">Coming Soon</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyGender">Gender preference</label>
+            <select id="propertyGender" name="gender">
+                <option value="Any">Any</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyLifestyle">Lifestyle preference</label>
+            <select id="propertyLifestyle" name="lifestyle">
+                <option value="">No preference</option>
+                <option value="Quiet">Quiet</option>
+                <option value="Social">Social</option>
+                <option value="Balanced">Balanced</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertySmoking">Smoking preference</label>
+            <select id="propertySmoking" name="smoking">
+                <option value="Any">Any</option>
+                <option value="Non-smoking">Non-smoking</option>
+                <option value="Smoking Allowed">Smoking Allowed</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyPets">Pet policy</label>
+            <select id="propertyPets" name="pets">
+                <option value="Any">Not specified</option>
+                <option value="Pets Allowed">Pets Allowed</option>
+                <option value="No Pets">No Pets</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyFurnished">Furnished?</label>
+            <select id="propertyFurnished" name="furnished">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyParking">Parking available?</label>
+            <select id="propertyParking" name="parking">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="propertyUtilities">Utilities included?</label>
+            <select id="propertyUtilities" name="utilities">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </div>
+
+        
+<!-- ==========================================
+     PROPERTY IMAGE UPLOAD
+=========================================== -->
+
+<div class="form-group property-images-field">
+
+    <label for="propertyImages">
+        Property Images
+        <span class="required-indicator">*</span>
+    </label>
+
+    <p class="image-upload-description">
+        Upload 4 to 5 clear photos of your property.
+        Include the bedroom, living area, kitchen, and
+        other important spaces.
+    </p>
+
+    <label
+        for="propertyImages"
+        class="property-image-dropzone"
+        id="propertyImageDropzone"
+    >
+        <span class="property-image-upload-icon" aria-hidden="true">
+            <svg
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="m21 15-5-5L5 21"/>
+                <path d="M12 8v4m-2-2h4"/>
+            </svg>
+        </span>
+
+        <span class="property-image-upload-title">
+            Select Property Images
+        </span>
+
+        <span class="property-image-upload-subtitle">
+            Choose at least 4 images, up to 5
+        </span>
+
+        <span class="property-image-upload-formats">
+            JPG, PNG or WebP · Maximum 5 MB per image
+        </span>
+    </label>
+
+    <input
+        type="file"
+        id="propertyImages"
+        name="property_images"
+        accept="image/jpeg,image/png,image/webp"
+        multiple
+        hidden
+    >
+
+    <div
+        id="propertyImageCount"
+        class="property-image-count"
+        aria-live="polite"
+    >
+        0 of 4 required images selected
+    </div>
+
+    <div
+    id="existingPropertyImages"
+    class="property-image-preview-grid"
+    aria-label="Current property images"
+    hidden
+></div>
+
+<div
+    id="propertyImagePreviews"
+    class="property-image-preview-grid"
+    aria-label="Newly selected property image previews"
+></div>
+
+    <p
+        id="propertyImageMessage"
+        class="property-image-message"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+</div>
+
+        <div class="form-field form-field-full">
+            <label for="propertyDescription">Property description *</label>
+            <textarea
+                id="propertyDescription"
+                name="description"
+                rows="5"
+                maxlength="5000"
+                placeholder="Describe the room or property, nearby transport, facilities and house rules..."
+                required
+            ></textarea>
+        </div>
+    </div>
+
+    <p
+        id="addPropertyMessage"
+        class="property-list-message"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+    <div class="form-actions">
+        <button
+            type="button"
+            id="cancelAddPropertyButtonBottom"
+            class="dashboard-button dashboard-button-secondary"
+        >
+            Cancel
+        </button>
+
+        <button
+            type="submit"
+            id="savePropertyButton"
+            class="dashboard-button"
+        >
+            Save Property
+        </button>
+    </div>
+</form>
+
+
+    <p
+        id="propertyListMessage"
+        class="property-list-message"
+        role="status"
+        aria-live="polite"
+    >
+        Select "View Properties" to load your listings.
+    </p>
+
+    <div
+        id="landlordPropertiesList"
+        class="property-list"
+    ></div>
+</section>
+
+
+        <div class="status">
+
+            <strong>
+                Landlord account verified.
+            </strong>
+
+            <br>
+
+            You are successfully authenticated
+            with CampusNest.
+
+        </div>
+
+
+    </main>
+            </div>
+    <!-- END DASHBOARD MAIN -->
+
+</div>
+<!-- END LANDLORD APP -->
+
+    <div
+        id="dashboardLoading"
+        class="loading"
+    >
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        <p>
+            Loading landlord dashboard...
+        </p>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase/supabaseClient.js"></script>
+
+
+    <script src="js/landlord/landlord-dashboard.js"></script>
+
+
+</body>
+
+</html>

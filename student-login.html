@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Sign In | CampusNest</title>
+
+    <link
+        rel="icon"
+        href="assets/images/sitelogo.png"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Student Login CSS -->
+    <link
+        rel="stylesheet"
+        href="css/student-login.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         STUDENT LOGIN PAGE
+    =========================================== -->
+
+    <main class="student-login-page">
+
+
+        <div class="student-login-container">
+
+
+            <!-- ======================================
+                 LOGO
+            ======================================= -->
+
+            <a
+                href="index.html"
+                class="student-login-logo"
+            >
+
+                <img
+                    src="assets/images/sitelogo.png"
+                    alt="CampusNest"
+                >
+
+            </a>
+
+
+
+            <!-- ======================================
+                 LOGIN CARD
+            ======================================= -->
+
+            <div class="student-login-card">
+
+
+                <!-- HEADER -->
+
+                <div class="student-login-header">
+
+                    <div class="student-login-icon">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                    </div>
+
+
+                    <h1>
+                        Student Sign In
+                    </h1>
+
+
+                    <p>
+                        Sign in to find housing, connect with
+                        roommates, and explore CampusNest.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     LOGIN FORM
+                =================================== -->
+
+                <form
+                    id="studentLoginForm"
+                    class="student-login-form"
+                >
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="studentEmail">
+                            Email address
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+
+                            <input
+                                type="email"
+                                id="studentEmail"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label for="studentPassword">
+                                Password
+                            </label>
+
+
+                            <a
+                                href="#"
+                                id="forgotPassword"
+                            >
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+
+                            <input
+                                type="password"
+                                id="studentPassword"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- REMEMBER -->
+
+                    <label class="remember-row">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>
+                            Keep me signed in
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        id="studentLoginButton"
+                        class="student-login-button"
+                    >
+
+                        <span id="loginButtonText">
+                            Sign In
+                        </span>
+
+
+                        <span
+                            id="loginSpinner"
+                            class="login-spinner"
+                            style="display: none;"
+                        >
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- ERROR -->
+
+                    <div
+                        id="studentLoginError"
+                        class="login-message error"
+                        style="display: none;"
+                    >
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <span id="studentLoginErrorText"></span>
+
+                    </div>
+
+
+
+                    <!-- SUCCESS -->
+
+                    <div
+                        id="studentLoginSuccess"
+                        class="login-message success"
+                        style="display: none;"
+                    >
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <span id="studentLoginSuccessText"></span>
+
+                    </div>
+
+
+                </form>
+
+
+
+                <!-- ==================================
+                     REGISTER
+                =================================== -->
+
+                <div class="student-register">
+
+                    <span>
+                        Don't have a CampusNest account?
+                    </span>
+
+
+                    <a href="student-register.html">
+                        Create a student account
+                    </a>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     LANDLORD LOGIN
+                =================================== -->
+
+                <div class="landlord-login-link">
+
+                    <span>
+                        Are you a landlord?
+                    </span>
+
+
+                    <a href="landlord-login.html">
+                        Landlord Sign In
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 TRUST MESSAGE
+            ======================================= -->
+
+            <div class="student-login-footer">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Your account is protected by CampusNest security.
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         SUPABASE
+    =========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script src="js/supabase/supabaseClient.js"></script>
+
+    <!-- Shared Authentication Utilities -->
+<script src="js/auth/auth-utils.js"></script>
+
+
+    <!-- Student Login -->
+    <script src="js/auth/student-login.js"></script>
+
+
+</body>
+
+</html>

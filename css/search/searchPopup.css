@@ -1,0 +1,604 @@
+/*==================================================
+  CAMPUSNEST GLOBAL POPUP
+  searchPopup.css
+==================================================*/
+
+
+/*=========================================
+GLOBAL POPUP
+=========================================*/
+
+.search-popup{
+
+    position:fixed;
+
+    width:380px;
+
+    max-height:70vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+
+    z-index:99999;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(10px);
+
+    transition:.25s;
+
+}
+
+
+/*=========================================
+ACTIVE
+=========================================*/
+
+.search-popup.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+
+/*=========================================
+HEADER
+=========================================*/
+
+.popup-header{
+
+    padding:22px 24px;
+
+    border-bottom:1px solid #f1f5f9;
+
+}
+
+
+.popup-header h3{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+
+/*=========================================
+SEARCH AREA
+=========================================*/
+
+.popup-search{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:20px;
+
+    padding:14px 16px;
+
+    border:1px solid #dbe3ea;
+
+    border-radius:14px;
+
+    transition:.25s;
+
+}
+
+
+.popup-search:focus-within{
+
+    border-color:#2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.10);
+
+}
+
+
+.popup-search i{
+
+    color:#64748b;
+
+    font-size:15px;
+
+}
+
+
+.popup-search input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    color:#111827;
+
+}
+
+
+.popup-search input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+
+/*=========================================
+LIST
+=========================================*/
+
+.popup-list{
+
+    overflow-y:auto;
+
+     flex:1;
+
+}
+
+
+/*=========================================
+SCROLLBAR
+=========================================*/
+
+.popup-list::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+.popup-list::-webkit-scrollbar-thumb{
+
+    background:#d1d5db;
+
+    border-radius:50px;
+
+}
+
+
+/*=========================================
+OPTION
+=========================================*/
+
+.popup-option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px 22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.popup-option:hover{
+
+    background:#f8fafc;
+
+}
+
+
+/*=========================================
+OPTION ICON
+=========================================*/
+
+.popup-option i{
+
+    width:22px;
+
+    color:#2563eb;
+
+    text-align:center;
+
+}
+
+
+/*=========================================
+OPTION TEXT
+=========================================*/
+
+.popup-option span{
+
+    flex:1;
+
+    font-size:15px;
+
+    color:#111827;
+
+    font-weight:500;
+
+}
+
+
+/*=========================================
+ACTIVE OPTION
+=========================================*/
+
+.popup-option.active{
+
+    background:#2563eb;
+
+}
+
+
+.popup-option.active i,
+
+.popup-option.active span{
+
+    color:#ffffff;
+
+}
+
+#popupContent{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==========================================
+   MOBILE SEARCH POPUP
+========================================== */
+
+@media (max-width: 768px){
+
+    .search-popup{
+
+        position: fixed;
+
+        left: 12px !important;
+
+        right: 12px !important;
+
+        top: 100px !important;
+
+        width: auto !important;
+
+        max-width: none;
+
+        max-height: calc(100vh - 120px);
+
+        border-radius: 20px;
+
+        z-index: 100000;
+
+    }
+
+    .search-popup.active{
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@media (max-width: 768px){
+
+    #popupContent{
+
+        max-height: calc(100vh - 180px);
+
+        overflow-y: auto;
+
+    }
+
+    .popup-list{
+
+        max-height: calc(100vh - 180px);
+
+        overflow-y: auto;
+
+    }
+
+}
+
+/* ==========================================
+   PHASE 4.7 — STEP 19.4
+   MOBILE POPUP BEHAVIOR
+========================================== */
+
+@media (max-width: 768px){
+
+    .search-popup{
+
+        position: fixed;
+
+        left: 12px !important;
+        right: 12px !important;
+
+        top: 80px !important;
+
+        width: auto !important;
+
+        max-width: none;
+
+        max-height: calc(100vh - 100px);
+
+        overflow: hidden;
+
+        border-radius: 20px;
+
+        z-index: 100000;
+
+    }
+
+
+    /* ======================================
+       POPUP HEADER
+    ====================================== */
+
+    .popup-header{
+
+        padding: 18px 20px;
+
+    }
+
+    .popup-header h3{
+
+        font-size: 18px;
+
+    }
+
+
+    /* ======================================
+       POPUP SEARCH
+    ====================================== */
+
+    .popup-search{
+
+        margin: 14px 16px;
+
+        padding: 13px 15px;
+
+    }
+
+
+    /* ======================================
+       POPUP CONTENT
+    ====================================== */
+
+    #popupContent{
+
+        display:flex;
+
+        flex-direction:column;
+
+        max-height:calc(100vh - 170px);
+
+        overflow:hidden;
+
+    }
+
+
+    /* ======================================
+       POPUP LIST
+    ====================================== */
+
+    .popup-list{
+
+        flex:1;
+
+        overflow-y:auto;
+
+        max-height:calc(100vh - 230px);
+
+        padding-bottom:10px;
+
+    }
+
+
+    /* ======================================
+       OPTIONS
+    ====================================== */
+
+    .popup-option{
+
+        padding:15px 20px;
+
+        min-height:52px;
+
+    }
+
+}
+
+/* =========================================================
+   CAMPUSNEST GLOBAL SEARCH POPUP
+   TOP / STICKY BEHAVIOUR
+   ========================================================= */
+
+#globalPopup {
+    position: fixed !important;
+
+    z-index: 999999 !important;
+
+    max-width: 420px;
+
+    width: min(420px, calc(100vw - 32px));
+
+    max-height: calc(100vh - 110px);
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease,
+        transform .2s ease;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px){
+
+    #globalPopup {
+
+        left: 50% !important;
+
+        right: auto !important;
+
+        transform:
+            translateX(-50%) !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px){
+
+    #globalPopup {
+
+        left: 16px !important;
+
+        right: 16px !important;
+
+        width: auto !important;
+
+        max-width: none !important;
+
+        transform: none !important;
+
+        max-height:
+            calc(100dvh - 100px);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px){
+
+    #globalPopup {
+
+        left: 12px !important;
+
+        right: 12px !important;
+
+        max-height:
+            calc(100dvh - 90px);
+
+    }
+
+}
+
+/* =========================================================
+   CAMPUSNEST FILTER POPUP POSITION FIX
+   ========================================================= */
+
+#globalPopup {
+    position: fixed !important;
+
+    /* JavaScript controls these */
+    left: auto;
+    top: auto;
+
+    /* IMPORTANT: remove right-side positioning */
+    right: auto !important;
+    bottom: auto !important;
+
+    /* Prevent old transform from moving popup */
+    transform: none !important;
+
+    z-index: 999999 !important;
+
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DESKTOP FILTER POPUP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+    #globalPopup.active {
+        position: fixed !important;
+
+        right: auto !important;
+        bottom: auto !important;
+
+        transform: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE FILTER POPUP
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    #globalPopup {
+        position: fixed !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        top: 80px !important;
+        bottom: auto !important;
+
+        transform: translateX(-50%) !important;
+
+        width: calc(100vw - 32px);
+        max-width: 420px;
+
+        max-height: calc(100dvh - 100px);
+
+        overflow-y: auto;
+
+        z-index: 999999 !important;
+    }
+
+}

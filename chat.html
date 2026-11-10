@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages | Homli</title>
+
+    <meta
+        name="description"
+        content="Connect with students and landlords through Homli messaging."
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/images/sitelogo.png"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Chat styles -->
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+
+<body class="chat-page">
+
+    <main class="chat-app" id="chatApp">
+
+        <!-- =====================================
+             LEFT PANEL: INBOX
+        ====================================== -->
+
+        <aside
+            class="chat-inbox"
+            id="chatInbox"
+            aria-label="Message inbox"
+        >
+
+            <!-- Inbox Header -->
+            <div class="inbox-header">
+
+                <div class="inbox-brand-row">
+
+                    <a
+                        href="index.html"
+                        class="inbox-brand"
+                        aria-label="Homli homepage"
+                    >
+                        <img
+                            src="assets/images/Homli Logo.png"
+                            alt="Homli"
+                        >
+                    </a>
+
+                    <button
+                        type="button"
+                        class="inbox-back-button"
+                        id="chatInboxBackButton"
+                        aria-label="Go back"
+                    >
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </div>
+
+                <div class="inbox-heading-row">
+
+                    <div>
+                        <p class="inbox-eyebrow">YOUR CONNECTIONS</p>
+
+                        <h1 class="inbox-title">
+                            Messages
+                        </h1>
+
+                        <p class="inbox-subtitle">
+                            Stay connected with your Homli community.
+                        </p>
+                    </div>
+
+                    <span
+                        class="inbox-count"
+                        id="chatInboxCount"
+                        aria-label="Unread message count"
+                        hidden
+                    >
+                        0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Inbox Search -->
+            <div class="inbox-search-wrapper">
+
+                <label
+                    for="chatInboxSearch"
+                    class="visually-hidden"
+                >
+                    Search conversations
+                </label>
+
+                <div class="inbox-search">
+
+                    <i class="fa-solid fa-magnifying-glass"
+                       aria-hidden="true"></i>
+
+                    <input
+                        type="search"
+                        id="chatInboxSearch"
+                        placeholder="Search conversations..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="clearChatSearch"
+                        class="clear-chat-search"
+                        aria-label="Clear search"
+                        hidden
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Inbox Filters -->
+            <div
+                class="inbox-filters"
+                role="group"
+                aria-label="Filter conversations"
+            >
+
+                <button
+                    type="button"
+                    class="inbox-filter active"
+                    data-inbox-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="inbox-filter"
+                    data-inbox-filter="unread"
+                    aria-pressed="false"
+                >
+                    Unread
+                </button>
+
+            </div>
+
+
+            <!-- Conversation List -->
+            <section
+                class="inbox-conversations-section"
+                aria-label="Your conversations"
+            >
+
+                <div class="inbox-list-heading">
+                    <h2>Recent conversations</h2>
+                </div>
+
+
+                <!-- Loading State -->
+                <div
+                    class="inbox-loading"
+                    id="chatInboxLoading"
+                    aria-live="polite"
+                >
+
+                    <span class="loading-spinner"></span>
+
+                    <p>Loading your conversations...</p>
+
+                </div>
+
+
+                <!-- Conversation Items Will Be Rendered Here -->
+                <div
+                    class="conversation-list"
+                    id="chatConversationList"
+                    role="list"
+                    aria-label="Conversation list"
+                    hidden
+                >
+                </div>
+
+
+                <!-- Empty Inbox -->
+                <div
+                    class="inbox-empty"
+                    id="chatInboxEmpty"
+                    hidden
+                >
+
+                    <div class="inbox-empty-icon">
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+
+                    <h3>No conversations yet</h3>
+
+                    <p>
+                        When you connect with a student or landlord,
+                        your conversations will appear here.
+                    </p>
+
+                    <a href="housing.html" class="inbox-empty-link">
+                        Explore housing
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- No Search Results -->
+                <div
+                    class="inbox-no-results"
+                    id="chatInboxNoResults"
+                    hidden
+                >
+
+                    <div class="inbox-empty-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <h3>No results found</h3>
+
+                    <p>
+                        Try searching with a different name or property.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- =====================================
+             RIGHT PANEL: CONVERSATION
+        ====================================== -->
+
+        <section
+            class="chat-conversation-panel"
+            id="chatConversationPanel"
+            aria-label="Selected conversation"
+        >
+
+            <!-- No Conversation Selected -->
+            <div
+                class="chat-welcome"
+                id="chatWelcome"
+            >
+
+                <div class="chat-welcome-content">
+
+                    <div class="chat-welcome-icon">
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </div>
+
+                    <h2>Your conversations, all in one place.</h2>
+
+                    <p>
+                        Select a conversation from your inbox to
+                        continue connecting with the Homli community.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Selected Conversation -->
+            <div
+                class="chat-active-conversation"
+                id="chatActiveConversation"
+                hidden
+            >
+            <!-- HOUSING DETAILS SIDE PANEL -->
+<aside
+    class="chat-property-details"
+    id="chatPropertyDetailsPanel"
+    aria-label="Housing details"
+    hidden
+>
+    <div class="chat-property-details-header">
+        <div>
+            <span class="chat-listing-label">PROPERTY DETAILS</span>
+            <h3>About this housing</h3>
+        </div>
+
+        <button
+            type="button"
+            id="chatPropertyDetailsClose"
+            aria-label="Close housing details"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <div id="chatPropertyDetailsContent">
+        <!-- Listing details will be rendered here -->
+    </div>
+</aside>
+            
+
+
+                <!-- Conversation Header -->
+                <header class="chat-header">
+
+                    <div class="chat-header-left">
+
+                        <button
+                            type="button"
+                            class="chat-back-button"
+                            id="chatBackButton"
+                            aria-label="Back to conversations"
+                        >
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+
+
+                        <!-- Participant Avatar -->
+                        <div
+                            class="chat-avatar-wrapper"
+                            id="chatAvatarWrapper"
+                        >
+
+                            <div
+                                class="chat-avatar"
+                                id="chatAvatar"
+                                aria-hidden="true"
+                            >
+                                H
+                            </div>
+
+                        </div>
+
+
+                        <!-- Participant Details -->
+                        <div class="chat-person">
+
+                            <h2 id="chatLandlordName">
+                                Conversation
+                            </h2>
+
+                            <div
+                                class="chat-presence-row"
+                                id="chatPresenceRow"
+                            >
+
+                                <span
+                                    class="chat-presence-dot"
+                                    id="chatPresenceDot"
+                                ></span>
+
+                                <span
+                                    class="chat-presence-status"
+                                    id="chatPresenceStatus"
+                                >
+                                    Connecting...
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Conversation Actions -->
+                    <div class="chat-header-actions">
+
+                        <button
+                            type="button"
+                            class="chat-options-button"
+                            id="chatOptionsButton"
+                            aria-label="Conversation options"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+
+
+                        <!-- Options Menu -->
+                        <div
+                            class="chat-options-menu"
+                            id="chatOptionsMenu"
+                            hidden
+                        >
+
+                            <button
+                                type="button"
+                                data-chat-action="view-property"
+                            >
+                                <i class="fa-regular fa-building"></i>
+                                View property
+                            </button>
+
+                            <button
+                                type="button"
+                                data-chat-action="close-menu"
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                                Close menu
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+                <!-- Property Context Card -->
+                <div
+                    class="chat-listing-bar"
+                    id="chatListingBar"
+                >
+
+                    <div class="chat-listing-image-wrapper">
+
+                        <img
+                            src="assets/images/sitelogo.png"
+                            alt=""
+                            class="chat-listing-image"
+                            id="chatListingImage"
+                        >
+
+                    </div>
+
+
+                    <div class="chat-listing-details">
+
+                        <span class="chat-listing-label">
+                            PROPERTY DISCUSSION
+                        </span>
+
+                        <h3
+                            id="chatListingName"
+                        >
+                            Property details
+                        </h3>
+
+                        <p
+                            id="chatListingTitle"
+                        >
+                            View the property associated with this conversation.
+                        </p>
+
+                    </div>
+
+
+                    <button
+    type="button"
+    class="chat-view-listing"
+    id="chatViewListing"
+    aria-label="View property details"
+>
+    <span>View</span>
+    <i class="fa-solid fa-arrow-right"></i>
+</button>
+
+                </div>
+
+
+                <!-- Messages Area -->
+                <section
+                    class="chat-messages-area"
+                    aria-label="Conversation messages"
+                >
+
+                    <div
+                        class="chat-messages"
+                        id="chatMessages"
+                        role="log"
+                        aria-live="polite"
+                        aria-relevant="additions"
+                        aria-label="Messages"
+                    >
+                    </div>
+
+                    <!-- Message Loading -->
+                    <div
+                        class="chat-messages-loading"
+                        id="chatMessagesLoading"
+                        hidden
+                    >
+
+                        <span class="loading-spinner"></span>
+
+                        <p>Loading messages...</p>
+
+                    </div>
+                    
+
+                </section>
+
+
+                <!-- Message Composer -->
+                <div class="chat-composer-wrapper">
+
+                    <form
+                        id="chatForm"
+                        class="chat-form"
+                    >
+
+                        <label
+                            for="chatMessageInput"
+                            class="visually-hidden"
+                        >
+                            Write a message
+                        </label>
+
+                        <div class="chat-input-container">
+
+                            <textarea
+                                id="chatMessageInput"
+                                name="message"
+                                placeholder="Write your message..."
+                                rows="1"
+                                maxlength="5000"
+                                autocomplete="off"
+                                required
+                            ></textarea>
+
+
+                            <button
+                                type="submit"
+                                id="chatSendButton"
+                                class="chat-send-button"
+                                aria-label="Send message"
+                                
+                            >
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div class="chat-composer-footer">
+
+                        <p>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Keep your conversations respectful and safe.
+                        </p>
+
+                        <span id="chatCharacterCount">
+                            0 / 5000
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FULL PAGE LOADING OVERLAY
+    ====================================== -->
+
+    <div
+        class="chat-loading"
+        id="chatLoading"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="chat-loading-content">
+
+            <span class="loading-spinner"></span>
+
+            <p>Preparing your messages...</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         ERROR OVERLAY
+    ====================================== -->
+
+    <div
+        class="chat-error"
+        id="chatError"
+        role="alert"
+        hidden
+    >
+
+        <div class="chat-error-content">
+
+            <div class="chat-error-icon">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+
+            <h2>Something went wrong</h2>
+
+            <p id="chatErrorMessage">
+                We couldn't load your conversations.
+                Please try again.
+            </p>
+
+            <button
+                type="button"
+                id="chatErrorBack"
+            >
+                Return to inbox
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         ACCESSIBILITY HELPER
+    ====================================== -->
+
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+
+    <!-- =====================================
+         SUPABASE
+    ====================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase/supabaseClient.js"></script>
+
+    <!-- Existing Supabase diagnostic script -->
+    <script src="js/supabase/testSupabase.js"></script>
+
+
+    <!-- =====================================
+         CHAT MODULES
+    ====================================== -->
+
+    <script src="js/chat/presence.js"></script>
+
+    <script src="js/chat/chat.js"></script>
+
+</body>
+</html>

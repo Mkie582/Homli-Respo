@@ -1,0 +1,615 @@
+/* ==========================================
+   CAMPUSNEST STUDENT LOGIN
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #f6f8fc;
+
+    color: #172033;
+
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   PAGE
+========================================== */
+
+.student-login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.student-login-container {
+
+    width: 100%;
+
+    max-width: 460px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.student-login-logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+
+.student-login-logo img {
+
+    width: 150px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.student-login-card {
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f2;
+
+    border-radius: 18px;
+
+    padding: 36px;
+
+    box-shadow:
+        0 12px 40px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.student-login-header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.student-login-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: #eef4ff;
+
+    color: #2864e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    font-size: 22px;
+}
+
+
+.student-login-header h1 {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 9px;
+
+    color: #172033;
+}
+
+
+.student-login-header p {
+
+    color: #748097;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.student-login-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.form-group label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #172033;
+}
+
+
+/* ==========================================
+   PASSWORD LABEL
+========================================== */
+
+.password-label-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.password-label-row a {
+
+    font-size: 13px;
+
+    color: #2864e8;
+
+    text-decoration: none;
+}
+
+
+.password-label-row a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.input-wrapper {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.input-wrapper > i {
+
+    position: absolute;
+
+    left: 15px;
+
+    color: #93a0b5;
+
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 50px;
+
+    border: 1px solid #d5ddea;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    padding: 0 45px 0 44px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    color: #172033;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.input-wrapper input:focus {
+
+    border-color: #2864e8;
+
+    box-shadow:
+        0 0 0 3px rgba(40, 100, 232, 0.10);
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #a5afc0;
+}
+
+
+/* ==========================================
+   PASSWORD TOGGLE
+========================================== */
+
+.password-toggle {
+
+    position: absolute;
+
+    right: 12px;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #8995aa;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+}
+
+
+.password-toggle:hover {
+
+    background: #f2f5fa;
+
+    color: #2864e8;
+}
+
+
+/* ==========================================
+   REMEMBER ME
+========================================== */
+
+.remember-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+    color: #657189;
+
+    cursor: pointer;
+}
+
+
+.remember-row input {
+
+    width: 16px;
+
+    height: 16px;
+
+    accent-color: #2864e8;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.student-login-button {
+
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #2864e8;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.student-login-button:hover {
+
+    background: #1f55cc;
+
+    box-shadow:
+        0 8px 20px rgba(40, 100, 232, 0.22);
+}
+
+
+.student-login-button:active {
+
+    transform: translateY(1px);
+}
+
+
+.student-login-button:disabled {
+
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   MESSAGES
+========================================== */
+
+.login-message {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 13px 14px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.login-message.error {
+
+    background: #fff0f0;
+
+    color: #c63636;
+
+    border: 1px solid #ffd5d5;
+}
+
+
+.login-message.success {
+
+    background: #edf9f1;
+
+    color: #247a43;
+
+    border: 1px solid #cdeed8;
+}
+
+
+.login-message i {
+
+    margin-top: 2px;
+}
+
+
+/* ==========================================
+   REGISTER
+========================================== */
+
+.student-register {
+
+    margin-top: 26px;
+
+    padding-top: 23px;
+
+    border-top: 1px solid #edf0f5;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    font-size: 13px;
+
+    color: #748097;
+}
+
+
+.student-register a {
+
+    color: #2864e8;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.student-register a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   LANDLORD LINK
+========================================== */
+
+.landlord-login-link {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #748097;
+}
+
+
+.landlord-login-link a {
+
+    color: #2864e8;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    margin-left: 4px;
+}
+
+
+.landlord-login-link a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.student-login-footer {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #8995aa;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+.student-login-footer i {
+
+    color: #2864e8;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 520px) {
+
+    .student-login-page {
+
+        padding: 25px 15px;
+    }
+
+
+    .student-login-card {
+
+        padding: 27px 20px;
+
+        border-radius: 15px;
+    }
+
+
+    .student-login-header h1 {
+
+        font-size: 25px;
+    }
+
+
+    .student-login-logo img {
+
+        width: 135px;
+    }
+
+}

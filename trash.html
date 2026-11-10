@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Find Housing | CampusNest</title>
+
+    <link
+        rel="icon"
+        href="assets/images/sitelogo.png"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CampusNest CSS -->
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/housing.css"
+    >
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     ANNOUNCEMENT
+========================================== -->
+
+<section
+    class="announcement-bar"
+    id="announcementBar"
+>
+
+    <div class="container">
+
+        <div class="announcement-content">
+
+            <span>
+                🎉 Welcome to CampusNest — Helping international students find housing, roommates and opportunities in Calgary.
+            </span>
+
+            <button
+                class="announcement-close"
+                id="closeAnnouncement"
+                aria-label="Close announcement"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header
+    class="header"
+    id="header"
+>
+
+    <div class="container">
+
+        <nav class="navbar">
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="assets/images/sitelogo.png"
+                    alt="CampusNest"
+                >
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <ul
+                class="nav-menu"
+                id="navMenu"
+            >
+
+                <li class="mobile-header">
+
+                    <img
+                        src="assets/images/sitelogo.png"
+                        alt="CampusNest"
+                    >
+
+                    <p>
+                        Find your perfect place in Calgary.
+                    </p>
+
+                </li>
+
+
+                <li>
+                    <a
+                        href="housing.html"
+                        class="nav-link active"
+                    >
+                        Housing
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="roommates.html"
+                        class="nav-link"
+                    >
+                        Roommates
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#jobs"
+                        class="nav-link"
+                    >
+                        Jobs
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#marketplace"
+                        class="nav-link"
+                    >
+                        Marketplace
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#resources"
+                        class="nav-link"
+                    >
+                        Resources
+                    </a>
+                </li>
+
+
+                <!-- MOBILE BUTTONS -->
+
+                <li class="mobile-buttons">
+
+                    <a
+                        href="#"
+                        class="btn btn-outline"
+                    >
+                        List Property
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn btn-primary"
+                    >
+                        Sign In
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- DESKTOP ACTIONS -->
+
+            <div class="nav-actions">
+
+                <a
+                    href="#"
+                    class="btn btn-outline"
+                >
+                    List Property
+                </a>
+
+                <a
+                    href="#"
+                    class="btn btn-primary"
+                >
+                    Sign In
+                </a>
+
+            </div>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle Menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ==========================================
+     HOUSING DISCOVERY
+========================================== -->
+
+<main class="housing-discovery">
+
+
+    <!-- ======================================
+         HERO
+    ======================================= -->
+
+    <section class="housing-discovery-hero">
+
+        <div class="container">
+
+            <span class="housing-eyebrow">
+                CAMPUSNEST HOUSING
+            </span>
+
+            <h1>
+                Find a place that feels like home.
+            </h1>
+
+            <p>
+                Discover student-friendly housing across Calgary
+                and find a place that fits your budget, lifestyle
+                and university.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         SEARCH AREA
+    ======================================= -->
+
+    <section class="housing-search-section">
+
+        <div class="container">
+
+            <div class="housing-search-box">
+
+
+                <!-- LOCATION -->
+
+                <div class="housing-search-field">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+
+                        <label for="housingLocation">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="housingLocation"
+                            placeholder="Calgary or neighborhood"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- UNIVERSITY -->
+
+                <div class="housing-search-field">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+
+                        <label for="housingUniversity">
+                            University
+                        </label>
+
+                        <select id="housingUniversity">
+
+                            <option value="">
+                                Any university
+                            </option>
+
+                            <option value="University of Calgary">
+                                University of Calgary
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUDGET -->
+
+                <div class="housing-search-field">
+
+                    <i class="fa-solid fa-dollar-sign"></i>
+
+                    <div>
+
+                        <label for="housingBudget">
+                            Maximum budget
+                        </label>
+
+                        <input
+                            type="number"
+                            id="housingBudget"
+                            placeholder="e.g. 1200"
+                            min="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <button
+                    type="button"
+                    id="housingSearchBtn"
+                    class="housing-search-btn"
+                >
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         RESULTS
+    ======================================= -->
+
+    <section class="housing-results-section">
+
+        <div class="container">
+
+
+            <!-- RESULTS HEADER -->
+
+            <div class="housing-results-header">
+
+                <div>
+
+                    <span class="housing-results-label">
+                        AVAILABLE HOUSING
+                    </span>
+
+                    <h2>
+                        Places you may like
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="housingResultsCount"
+                    class="housing-results-count"
+                >
+                    Loading housing...
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 DISCOVERY LAYOUT
+            =================================== -->
+
+            <div class="housing-discovery-layout">
+
+
+                <!-- ==================================
+                     LISTINGS
+                =================================== -->
+
+                <div
+                    class="housing-listings"
+                    id="housingListings"
+                >
+
+                    <div class="housing-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <p>
+                            Finding available housing...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     MAP PLACEHOLDER
+                =================================== -->
+
+                <aside
+                    class="housing-map"
+                    id="housingMap"
+                >
+
+                    <div class="housing-map-placeholder">
+
+                        <i class="fa-solid fa-map-location-dot"></i>
+
+                        <h3>
+                            Housing Map
+                        </h3>
+
+                        <p>
+                            Interactive housing map coming next.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ==========================================
+     SUPABASE
+=========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase/supabaseClient.js"></script>
+
+<script src="js/supabase/testSupabase.js"></script>
+
+
+<!-- ==========================================
+     HOUSING
+=========================================== -->
+
+<script src="js/housing/housingListings.js"></script>
+
+<script src="js/housing/housingRenderer.js"></script>
+
+<script src="js/housing/housing.js"></script>
+
+
+<!-- ==========================================
+     GLOBAL
+=========================================== -->
+
+<script src="js/announcement.js"></script>
+
+<script src="js/navbar.js"></script>
+
+</body>
+
+</html>
+
+<script>
+    class SearchService {
+
+    constructor() {
+
+        this.searchData = [];
+        this.pageCategory = null;
+    }
+
+
+    // ==========================================
+    // SET SEARCH DATA
+    // ==========================================
+
+    setData(data) {
+
+        this.searchData =
+            Array.isArray(data)
+                ? data
+                : [];
+
+    }
+
+    // ==========================================
+// SET PAGE CATEGORY
+// ==========================================
+
+setPageCategory(category) {
+
+    this.pageCategory =
+        category || null;
+
+}
+
+
+    // ==========================================
+    // SEARCH
+    // ==========================================
+
+search(filters = {}) {
+
+    // ==========================================
+    // COPY FILTERS
+    // ==========================================
+
+    const activeFilters = {
+        ...filters
+    };
+
+
+    // ==========================================
+    // APPLY PAGE CATEGORY
+    // ==========================================
+
+    if (
+        campusSearchCategory &&
+        campusSearchCategory !== "All Categories"
+    ) {
+
+        activeFilters.category =
+            campusSearchCategory;
+
+    }
+
+
+    // ==========================================
+    // FILTER RESULTS
+    // ==========================================
+
+    return this.searchData.filter(item => {
+
+        return this.matches(
+            item,
+            activeFilters
+        );
+
+    });
+
+}
+
+
+    // ==========================================
+    // MATCH ALL FILTERS
+    // ==========================================
+
+    matches(item, filters) {
+
+        return (
+
+            this.matchKeyword(
+                item,
+                filters.keyword
+            )
+
+            &&
+
+            this.matchLocation(
+                item,
+                filters.location
+            )
+
+            &&
+
+            this.matchUniversity(
+                item,
+                filters.university
+            )
+
+            &&
+
+            this.matchHousingType(
+                item,
+                filters.housingType
+            )
+
+            &&
+
+            this.matchBudget(
+                item,
+                filters.budget
+            )
+
+            &&
+
+            this.matchMoveIn(
+                item,
+                filters.moveIn
+            )
+
+            &&
+
+            this.matchGender(
+                item,
+                filters.gender
+            )
+
+            &&
+
+            this.matchLifestyle(
+                item,
+                filters.lifestyle
+            )
+
+            &&
+
+            this.matchSmoking(
+                item,
+                filters.smoking
+            )
+
+            &&
+
+            this.matchPets(
+                item,
+                filters.pets
+            )
+
+            &&
+
+            this.matchFurnished(
+                item,
+                filters.furnished
+            )
+
+            &&
+
+            this.matchParking(
+                item,
+                filters.parking
+            )
+
+            &&
+
+            this.matchUtilities(
+                item,
+                filters.utilities
+            )
+
+            &&
+
+            this.matchCategory(
+                item,
+                filters.category
+            )
+
+        );
+
+    }
+
+
+    // ==========================================
+    // KEYWORD
+    // ==========================================
+
+    matchKeyword(item, keyword) {
+
+        if (!keyword) {
+
+            return true;
+
+        }
+
+
+        keyword =
+            String(keyword)
+                .toLowerCase()
+                .trim();
+
+
+        const title =
+            String(item.title || "")
+                .toLowerCase();
+
+        const category =
+            String(item.category || "")
+                .toLowerCase();
+
+        const location =
+            String(item.location || "")
+                .toLowerCase();
+
+        const university =
+            String(item.university || "")
+                .toLowerCase();
+
+
+        const keywords =
+            Array.isArray(item.keywords)
+                ? item.keywords
+                : [];
+
+
+        return (
+
+            title.includes(keyword)
+
+            ||
+
+            category.includes(keyword)
+
+            ||
+
+            location.includes(keyword)
+
+            ||
+
+            university.includes(keyword)
+
+            ||
+
+            keywords.some(word =>
+
+                String(word)
+                    .toLowerCase()
+                    .includes(keyword)
+
+            )
+
+        );
+
+    }
+
+
+    // ==========================================
+    // LOCATION
+    // ==========================================
+
+    matchLocation(item, location) {
+
+        if (
+
+            !location
+
+            ||
+
+            location === "Any Location"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.location === location;
+
+    }
+
+
+    // ==========================================
+    // UNIVERSITY
+    // ==========================================
+
+    matchUniversity(item, university) {
+
+        if (
+
+            !university
+
+            ||
+
+            university === "Any University"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.university === university;
+
+    }
+
+
+    // ==========================================
+    // HOUSING TYPE
+    // ==========================================
+
+    matchHousingType(item, housingType) {
+
+        if (
+
+            !housingType
+
+            ||
+
+            housingType === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.housingType === housingType;
+
+    }
+
+
+    // ==========================================
+    // MOVE-IN DATE
+    // ==========================================
+
+    matchMoveIn(item, moveIn) {
+
+        if (
+
+            !moveIn
+
+            ||
+
+            moveIn === "Any Date"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        if (!item.moveIn) {
+
+            return false;
+
+        }
+
+
+        const listingDate =
+            new Date(
+                item.moveIn + "T00:00:00"
+            );
+
+
+        const requestedDate =
+            new Date(
+                moveIn + "T00:00:00"
+            );
+
+
+        return listingDate <= requestedDate;
+
+    }
+
+
+    // ==========================================
+    // BUDGET
+    // ==========================================
+
+    matchBudget(item, budget) {
+
+        if (
+
+            !budget
+
+            ||
+
+            typeof budget !== "object"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        const min =
+            Number(budget.min);
+
+
+        const max =
+            Number(budget.max);
+
+
+        if (
+
+            Number.isNaN(min)
+
+            ||
+
+            Number.isNaN(max)
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return (
+
+            Number(item.budget || 0) >= min
+
+            &&
+
+            Number(item.budget || 0) <= max
+
+        );
+
+    }
+
+
+    // ==========================================
+    // GENDER
+    // ==========================================
+
+    matchGender(item, gender) {
+
+        if (
+
+            !gender
+
+            ||
+
+            gender === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.gender === gender;
+
+    }
+
+
+    // ==========================================
+    // LIFESTYLE
+    // ==========================================
+
+    matchLifestyle(item, lifestyle) {
+
+        if (
+
+            !lifestyle
+
+            ||
+
+            lifestyle === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.lifestyle === lifestyle;
+
+    }
+
+
+    // ==========================================
+    // SMOKING
+    // ==========================================
+
+    matchSmoking(item, smoking) {
+
+        if (
+
+            !smoking
+
+            ||
+
+            smoking === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.smoking === smoking;
+
+    }
+
+
+    // ==========================================
+    // PETS
+    // ==========================================
+
+    matchPets(item, pets) {
+
+        if (
+
+            !pets
+
+            ||
+
+            pets === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.pets === pets;
+
+    }
+
+
+    // ==========================================
+    // FURNISHED
+    // ==========================================
+
+    matchFurnished(item, furnished) {
+
+        if (
+
+            !furnished
+
+            ||
+
+            furnished === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.furnished === furnished;
+
+    }
+
+
+    // ==========================================
+    // PARKING
+    // ==========================================
+
+    matchParking(item, parking) {
+
+        if (
+
+            !parking
+
+            ||
+
+            parking === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.parking === parking;
+
+    }
+
+
+    // ==========================================
+    // UTILITIES
+    // ==========================================
+
+    matchUtilities(item, utilities) {
+
+        if (
+
+            !utilities
+
+            ||
+
+            utilities === "Any"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.utilities === utilities;
+
+    }
+
+
+    // ==========================================
+    // CATEGORY
+    // ==========================================
+
+    matchCategory(item, category) {
+
+        if (
+
+            !category
+
+            ||
+
+            category === "All Categories"
+
+        ) {
+
+            return true;
+
+        }
+
+
+        return item.category === category;
+
+    }
+
+}
+
+
+// ==========================================
+// CREATE CAMPUSNEST SEARCH ENGINE
+// ==========================================
+
+const campusSearch =
+    new SearchService();
+
+
+// ==========================================
+// LOAD SEARCH DATA
+// ==========================================
+
+campusSearch.setData(
+    window.searchData || []
+);
+
+
+// ==========================================
+// DETECT SEARCH CONTEXT
+// ==========================================
+
+const campusSearchContainer =
+    document.getElementById("campusSearch");
+
+
+// ==========================================
+// GET PAGE CATEGORY
+// ==========================================
+
+const campusSearchCategory =
+    campusSearchContainer?.dataset.category || null;
+
+
+// ==========================================
+// DEBUG
+// ==========================================
+
+console.log(
+    "CampusNest SearchService:",
+    campusSearch.searchData
+);
+
+console.log(
+    "CampusNest Search Category:",
+    campusSearchCategory || "ALL"
+);
+</script>

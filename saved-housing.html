@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Find student housing in Calgary with CampusNest."
+    >
+
+    <title>Housing | CampusNest</title>
+
+
+    <!-- Favicon -->
+
+    <link
+        rel="icon"
+        href="assets/images/sitelogo.png"
+    >
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- Main CampusNest CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <link rel="stylesheet" href="css/search/searchDesktop.css">
+<link rel="stylesheet" href="css/search/searchPopup.css">
+<link rel="stylesheet" href="css/search/searchCalendar.css">
+<link rel="stylesheet" href="css/search/searchBudget.css">
+<link rel="stylesheet" href="css/search/searchResults.css">
+<link rel="stylesheet" href="css/search/searchSuggestions.css">
+<link rel="stylesheet" href="css/search/searchMobile.css">
+
+    <!-- Housing CSS -->
+
+    <link rel="stylesheet" href="css/housing.css">
+<link rel="stylesheet" href="css/housing-card-overrides.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ANNOUNCEMENT BAR
+===================================================== -->
+
+<section
+    class="announcement-bar"
+    id="announcementBar"
+>
+
+    <div class="container">
+
+        <div class="announcement-content">
+
+            <span>
+                🎉 Welcome to CampusNest — Helping international students find housing, roommates and opportunities in Calgary.
+            </span>
+
+            <button
+                type="button"
+                class="announcement-close"
+                id="closeAnnouncement"
+                aria-label="Close announcement"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+    class="header"
+    id="header"
+>
+
+    <div class="container">
+
+        <nav class="navbar">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="assets/images/sitelogo.png"
+                    alt="CampusNest"
+                >
+
+            </a>
+
+
+
+            <!-- NAVIGATION -->
+
+            <ul
+                class="nav-menu"
+                id="navMenu"
+            >
+
+
+                <!-- MOBILE HEADER -->
+
+                <li class="mobile-header">
+
+                    <img
+                        src="assets/images/sitelogo.png"
+                        alt="CampusNest"
+                    >
+
+                    <p>
+                        Find your perfect place in Calgary.
+                    </p>
+
+                </li>
+
+
+
+                <li>
+
+                    <a
+                        href="housing.html"
+                        class="nav-link active"
+                    >
+                        Housing
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="roommates.html"
+                        class="nav-link"
+                    >
+                        Roommates
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="#jobs"
+                        class="nav-link"
+                    >
+                        Jobs
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="#marketplace"
+                        class="nav-link"
+                    >
+                        Marketplace
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="#resources"
+                        class="nav-link"
+                    >
+                        Resources
+                    </a>
+
+                </li>
+
+
+                <!-- MOBILE BUTTONS -->
+
+                <li class="mobile-buttons">
+
+                    <a
+                        href="#"
+                        class="btn btn-outline"
+                    >
+                        List Property
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn btn-primary"
+                    >
+                        Sign In
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+
+            <!-- DESKTOP ACTIONS -->
+
+            <div class="nav-actions">
+
+                <a
+                    href="#"
+                    class="btn btn-outline"
+                >
+                    List Property
+                </a>
+
+                <a
+                    href="#"
+                    class="btn btn-primary"
+                >
+                    Sign In
+                </a>
+
+            </div>
+
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle Menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+
+<div
+    class="nav-overlay"
+    id="navOverlay"
+></div>
+
+
+
+<!-- =====================================================
+     SAVED HOUSING
+     PHASE 6.5.2
+====================================================== -->
+
+<main class="housing-page saved-housing-page" style=" margin-left: 1.5rem; margin-right: 1.5rem;"> 
+
+    <!-- PAGE HEADER -->
+    <section class="housing-header">
+
+        <div class="housing-header-content">
+
+            <span class="housing-eyebrow">
+                YOUR CAMPUSNEST COLLECTION
+            </span>
+
+            <h1 style="margin-top: 3rem;">
+                Your Saved Homes
+            </h1>
+
+            <p>
+                Keep track of the places you love
+                and revisit them whenever you're ready.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAVED LISTINGS -->
+    <section class="housing-results-section">
+
+        <div class="housing-results-header">
+
+            <h2>
+                Saved Housing
+            </h2>
+
+            <span id="savedHousingCount">
+                Loading saved homes...
+            </span>
+
+        </div>
+
+
+        <!-- Listings will be inserted here by JavaScript -->
+        <div
+            class="housing-listings"
+            id="savedHousingListings"
+        >
+
+            <div class="housing-loading">
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading your saved homes...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- CampusNest Supabase -->
+
+<script src="js/supabase/supabaseClient.js"></script>
+<script src="js/supabase/testSupabase.js"></script>
+
+
+<!-- Supabase Test -->
+
+<script src="js/supabase/testSupabase.js"></script>
+
+
+<!-- Housing Data -->
+
+<script src="js/housing/housingListings.js"></script>
+
+
+<!-- Announcement -->
+
+<script src="js/announcement.js"></script>
+
+
+<!-- Navbar -->
+
+<script src="js/navbar.js"></script>
+
+<!-- SAVED HOUSING PAGE -->
+<script src="js/housing/savedHousing.js"></script>
+
+
+</body>
+
+</html>

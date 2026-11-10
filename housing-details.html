@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View student housing details on CampusNest."
+    >
+
+    <title>
+        Housing Details | CampusNest
+    </title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        href="assets/images/sitelogo.png"
+    >
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <!-- Main CampusNest CSS -->
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <!-- Housing Details CSS -->
+    <link
+        rel="stylesheet"
+        href="css/housing-details.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     ANNOUNCEMENT
+================================================== -->
+
+<section
+    class="announcement-bar"
+    id="announcementBar"
+>
+
+    <div class="container">
+
+        <div class="announcement-content">
+
+            <span>
+                🎉 Welcome to CampusNest — Helping international students find housing, roommates and opportunities in Calgary.
+            </span>
+
+            <button
+                type="button"
+                class="announcement-close"
+                id="closeAnnouncement"
+                aria-label="Close announcement"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header
+    class="header"
+    id="header"
+>
+
+    <div class="container">
+
+        <nav class="navbar">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="assets/images/sitelogo.png"
+                    alt="CampusNest"
+                >
+
+            </a>
+
+
+
+            <!-- NAVIGATION -->
+
+            <ul
+                class="nav-menu"
+                id="navMenu"
+            >
+
+                <li class="mobile-header">
+
+                    <img
+                        src="assets/images/sitelogo.png"
+                        alt="CampusNest"
+                    >
+
+                    <p>
+                        Find your perfect place in Calgary.
+                    </p>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="housing.html"
+                        class="nav-link active"
+                    >
+                        Housing
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="roommates.html"
+                        class="nav-link"
+                    >
+                        Roommates
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="jobs.html"
+                        class="nav-link"
+                    >
+                        Jobs
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="marketplace.html"
+                        class="nav-link"
+                    >
+                        Marketplace
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="#"
+                        class="nav-link"
+                    >
+                        Resources
+                    </a>
+
+                </li>
+
+
+                <!-- MOBILE BUTTONS -->
+
+                <li class="mobile-buttons">
+
+                    <a
+                        href="#"
+                        class="btn btn-outline"
+                    >
+                        List Property
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn btn-primary"
+                    >
+                        Sign In
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+
+            <!-- DESKTOP ACTIONS -->
+
+            <div class="nav-actions">
+
+                <a
+                    href="#"
+                    class="btn btn-outline"
+                >
+                    List Property
+                </a>
+
+                <a
+                    href="#"
+                    class="btn btn-primary"
+                >
+                    Sign In
+                </a>
+
+            </div>
+
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     NAV OVERLAY
+================================================== -->
+
+<div
+    class="nav-overlay"
+    id="navOverlay"
+></div>
+
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<main class="housing-details-page">
+
+
+    <!-- ==================================================
+         LOADING
+    ================================================== -->
+
+    <section
+        class="details-loading"
+        id="detailsLoading"
+    >
+
+        <div class="loading-spinner"></div>
+
+        <p>
+            Loading housing details...
+        </p>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         ERROR
+    ================================================== -->
+
+    <section
+        class="details-error"
+        id="detailsError"
+        hidden
+    >
+
+        <div class="error-icon">
+
+            <i class="fa-solid fa-house-circle-xmark"></i>
+
+        </div>
+
+        <h1>
+            Listing not found
+        </h1>
+
+        <p>
+            Sorry, we couldn't find this housing listing.
+        </p>
+
+        <a
+            href="housing.html"
+            class="details-back-button"
+        >
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Housing
+        </a>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CONTENT
+    ================================================== -->
+
+    <div
+        class="details-content"
+        id="detailsContent"
+        hidden
+    >
+
+
+        <!-- ==================================================
+             BACK LINK
+        ================================================== -->
+
+        <div class="details-container">
+
+            <a
+                href="housing.html"
+                class="back-to-housing"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to housing
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             IMAGE GALLERY
+        ================================================== -->
+
+        <section class="details-container property-gallery">
+
+
+            <div class="gallery-grid">
+
+
+                <!-- MAIN IMAGE -->
+
+                <button
+                    type="button"
+                    class="gallery-main"
+                    id="galleryMain"
+                    aria-label="Open property gallery"
+                >
+
+                    <img
+                        id="mainPropertyImage"
+                        src="assets/images/housing/apartment.jpg"
+                        alt="Housing property"
+                    >
+
+                    <span class="gallery-main-overlay">
+
+                        <i class="fa-solid fa-expand"></i>
+
+                        View photos
+
+                    </span>
+
+                </button>
+
+
+
+                <!-- SECOND IMAGE -->
+
+                <button
+                    type="button"
+                    class="gallery-small"
+                    data-gallery-index="1"
+                >
+
+                    <img
+                        id="galleryImage1"
+                        src="assets/images/housing/room.jpg"
+                        alt="Housing property"
+                    >
+
+                </button>
+
+
+
+                <!-- THIRD IMAGE -->
+
+                <button
+                    type="button"
+                    class="gallery-small"
+                    data-gallery-index="2"
+                >
+
+                    <img
+                        id="galleryImage2"
+                        src="assets/images/housing/student.jpg"
+                        alt="Housing property"
+                    >
+
+                </button>
+
+
+
+                <!-- FOURTH IMAGE -->
+
+                <button
+                    type="button"
+                    class="gallery-small"
+                    data-gallery-index="3"
+                >
+
+                    <img
+                        id="galleryImage3"
+                        src="assets/images/housing/calgarys-skyline.jpg"
+                        alt="Housing property"
+                    >
+
+                </button>
+
+
+
+                <!-- FIFTH IMAGE -->
+
+                <button
+                    type="button"
+                    class="gallery-small gallery-last"
+                    data-gallery-index="4"
+                >
+
+                    <img
+                        id="galleryImage4"
+                        src="assets/images/housing/apartment.jpg"
+                        alt="Housing property"
+                    >
+
+                    <span class="gallery-more">
+                        <i class="fa-solid fa-images"></i>
+                        View all photos
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             TITLE AREA
+        ================================================== -->
+
+        <section class="details-container property-heading">
+
+
+            <div class="heading-main">
+
+                <div class="verified-line">
+
+                    <span
+                        class="verified-pill"
+                        id="verifiedPill"
+                    >
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Verified listing
+
+                    </span>
+
+                </div>
+
+
+                <h1 id="propertyTitle">
+                    Housing
+                </h1>
+
+
+                <div class="property-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span id="propertyLocation">
+                        Calgary
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="property-university"
+                    id="propertyUniversity"
+                >
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <span>
+                        University of Calgary
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="heading-actions">
+
+                <button
+                    type="button"
+                    class="heading-action"
+                    id="shareListing"
+                >
+
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                    Share
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="heading-action"
+                    id="saveListing"
+                >
+
+                    <i class="fa-regular fa-heart"></i>
+
+                    <span>
+                        Save
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             MAIN DETAILS LAYOUT
+        ================================================== -->
+
+        <section class="details-container details-layout">
+
+
+            <!-- ==================================================
+                 LEFT
+            ================================================== -->
+
+            <div class="details-main-column">
+
+
+                <!-- ==================================================
+                     QUICK FEATURES
+                ================================================== -->
+
+                <section class="details-card quick-features-card">
+
+                    <div class="section-card-heading">
+
+                        <div>
+
+                            <span class="section-eyebrow">
+                                THE SPACE
+                            </span>
+
+                            <h2>
+                                What this place offers
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-features">
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-house"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Housing type
+                                </span>
+
+                                <strong id="housingType">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-bed"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Room
+                                </span>
+
+                                <strong id="roomType">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-couch"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Furnished
+                                </span>
+
+                                <strong id="furnished">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-car"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Parking
+                                </span>
+
+                                <strong id="parking">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-bolt"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Utilities
+                                </span>
+
+                                <strong id="utilities">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="quick-feature">
+
+                            <div class="feature-icon">
+
+                                <i class="fa-solid fa-calendar-days"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Move-in
+                                </span>
+
+                                <strong id="moveIn">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     DESCRIPTION
+                ================================================== -->
+
+                <section class="details-card">
+
+                    <div class="section-card-heading">
+
+                        <span class="section-eyebrow">
+                            ABOUT THIS PLACE
+                        </span>
+
+                        <h2>
+                            A place to feel at home
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="property-description"
+                        id="propertyDescription"
+                    >
+
+                        <p>
+                            Loading property information...
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     UNIVERSITY
+                ================================================== -->
+
+                <section class="details-card">
+
+                    <div class="section-card-heading">
+
+                        <span class="section-eyebrow">
+                            NEARBY UNIVERSITY
+                        </span>
+
+                        <h2>
+                            Study close to what matters
+                        </h2>
+
+                    </div>
+
+
+                    <div class="university-card">
+
+                        <div class="university-icon">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                        </div>
+
+
+                        <div class="university-copy">
+
+                            <strong id="universityName">
+                                University of Calgary
+                            </strong>
+
+                            <span id="universityDistance">
+                                Student-friendly location
+                            </span>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     PREFERENCES
+                ================================================== -->
+
+                <section class="details-card">
+
+                    <div class="section-card-heading">
+
+                        <span class="section-eyebrow">
+                            HOUSEHOLD PREFERENCES
+                        </span>
+
+                        <h2>
+                            Good to know
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="preference-chips"
+                        id="preferenceChips"
+                    >
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     LANDLORD
+                ================================================== -->
+
+                <section class="details-card landlord-card">
+
+                    <div class="landlord-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div class="landlord-info">
+
+                        <span class="section-eyebrow">
+                            LISTED BY
+                        </span>
+
+                        <h2 id="landlordName">
+                            Property host
+                        </h2>
+
+                        <p>
+                            Connect with the property owner through CampusNest.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-contact-button"
+                        id="landlordContactSecondary"
+                    >
+
+                        <i class="fa-regular fa-message"></i>
+
+                        Message
+
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     SAFETY
+                ================================================== -->
+
+                <div class="safety-note">
+
+                    <div class="safety-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Stay safe on CampusNest
+                        </strong>
+
+                        <p>
+                            Keep conversations and housing arrangements
+                            inside CampusNest. Never send money before
+                            confirming the property and landlord.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 RIGHT PRICE CARD
+            ================================================== -->
+
+            <aside class="details-sidebar">
+
+
+                <div class="price-card">
+
+
+                    <div class="price-card-top">
+
+                        <div>
+
+                            <span class="price-label">
+                                Monthly rent
+                            </span>
+
+                            <div class="property-price">
+
+                                <strong id="propertyPrice">
+                                    CA$—
+                                </strong>
+
+                                <span>
+                                    / month
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="availability-badge"
+                            id="availabilityBadge"
+                        >
+
+                            Available
+
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="price-divider"></div>
+
+
+
+                    <div class="price-meta">
+
+
+                        <div>
+
+                            <span>
+                                Move-in
+                            </span>
+
+                            <strong id="sidebarMoveIn">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Location
+                            </span>
+
+                            <strong id="sidebarLocation">
+                                Calgary
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="contact-button"
+                        id="contactLandlord"
+                    >
+
+                        <i class="fa-regular fa-message"></i>
+
+                        Message landlord
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="save-button"
+                        id="saveListingSidebar"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        Save listing
+
+                    </button>
+
+
+
+                    <p class="price-note">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Keep your communication on CampusNest.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     LOCATION CARD
+                ================================================== -->
+
+                <div class="sidebar-info-card">
+
+                    <div class="sidebar-info-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Property location
+                        </strong>
+
+                        <p id="sidebarFullLocation">
+                            Calgary, Alberta
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     REPORT
+                ================================================== -->
+
+                <button
+                    type="button"
+                    class="report-button"
+                    id="reportListing"
+                >
+
+                    <i class="fa-regular fa-flag"></i>
+
+                    Report this listing
+
+                </button>
+
+            </aside>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- ==================================================
+     GALLERY LIGHTBOX
+================================================== -->
+
+<div
+    class="gallery-lightbox"
+    id="galleryLightbox"
+    aria-hidden="true"
+>
+
+    <button
+        type="button"
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close gallery"
+    >
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="lightbox-arrow lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous photo"
+    >
+
+        <i class="fa-solid fa-chevron-left"></i>
+
+    </button>
+
+
+    <div class="lightbox-content">
+
+        <img
+            src=""
+            alt="Housing property"
+            id="lightboxImage"
+        >
+
+        <div
+            class="lightbox-counter"
+            id="lightboxCounter"
+        >
+            1 / 1
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="lightbox-arrow lightbox-next"
+        id="lightboxNext"
+        aria-label="Next photo"
+    >
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     MESSAGE MODAL
+================================================== -->
+
+<div
+    class="simple-modal"
+    id="messageModal"
+    aria-hidden="true"
+>
+
+    <div class="simple-modal-backdrop"></div>
+
+
+    <div
+        class="simple-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="messageModalTitle"
+    >
+
+        <button
+            type="button"
+            class="modal-close"
+            id="messageModalClose"
+            aria-label="Close"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-icon">
+
+            <i class="fa-regular fa-message"></i>
+
+        </div>
+
+
+        <h2 id="messageModalTitle">
+            Contact this landlord
+        </h2>
+
+
+        <p>
+            Messaging will happen securely through CampusNest.
+            Sign in to continue the conversation.
+        </p>
+
+
+        <div class="modal-actions">
+
+            <a
+                href="signin.html"
+                class="modal-primary-button"
+            >
+                Sign In
+            </a>
+
+            <button
+                type="button"
+                class="modal-secondary-button"
+                id="messageModalCancel"
+            >
+                Maybe later
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     SUPABASE
+================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase/supabaseClient.js"></script>
+
+<script src="js/supabase/testSupabase.js"></script>
+
+
+
+<!-- ==================================================
+     EXISTING HOUSING DATA
+================================================== -->
+
+<script src="js/housing/housingListings.js"></script>
+
+
+
+<!-- ==================================================
+     GLOBAL
+================================================== -->
+
+<script src="js/announcement.js"></script>
+
+<script src="js/navbar.js"></script>
+
+
+
+<!-- ==================================================
+     HOUSING DETAILS
+================================================== -->
+
+<script src="js/housing/housing-details.js"></script>
+
+
+</body>
+
+</html>

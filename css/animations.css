@@ -1,0 +1,73 @@
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+.apartment-card{
+
+    animation:floating 6s ease-in-out infinite;
+
+}
+
+.student-card{
+
+    animation:floating 7s ease-in-out infinite;
+
+}
+
+.roommate-card{
+
+    animation:floating 8s ease-in-out infinite;
+
+}
+
+.job-card{
+
+    animation:floating 6.5s ease-in-out infinite;
+
+}
+
+.city-card{
+
+    animation:floating 7.5s ease-in-out infinite;
+
+}

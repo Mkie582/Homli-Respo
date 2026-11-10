@@ -1,0 +1,57 @@
+.university-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:50px;
+
+}
+
+.university-card{
+
+    padding:40px 20px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.university-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.university-card img{
+
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:20px;
+
+}
+
+.university-card h3{
+
+    font-size:1rem;
+
+}
+
+@media(max-width:900px){
+
+.university-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.university-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

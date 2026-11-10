@@ -1,0 +1,1316 @@
+/* =========================================================
+   PHASE 4.7
+   STEP 19.1 — MOBILE SEARCH LAYOUT
+   ========================================================= */
+
+
+/* =========================================================
+   MOBILE SEARCH OVERLAY
+   ========================================================= */
+
+#mobileSearchOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100dvh;
+
+    background:#ffffff;
+
+    z-index:99999;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:24px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    box-sizing:border-box;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(100%);
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        visibility .35s ease;
+
+}
+
+
+/* =========================================================
+   OPEN STATE
+   ========================================================= */
+
+#mobileSearchOverlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.mobile-search-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    width:100%;
+
+    margin-bottom:30px;
+
+}
+
+
+.mobile-search-header button{
+
+    width:42px;
+
+    height:42px;
+
+    min-width:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.mobile-search-header h2{
+
+    margin:0;
+
+    font-size:24px;
+
+    line-height:1.2;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+
+/* =========================================================
+   SEARCH BOX
+   ========================================================= */
+
+.mobile-search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    width:100%;
+
+    height:60px;
+
+    min-height:60px;
+
+    border-radius:18px;
+
+    border:2px solid #2563eb;
+
+    padding:0 20px;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(37,99,235,.12);
+
+    margin-bottom:28px;
+
+    box-sizing:border-box;
+
+}
+
+
+.mobile-search-box i{
+
+    flex-shrink:0;
+
+    color:#64748b;
+
+    font-size:16px;
+
+}
+
+
+.mobile-search-box input{
+
+    flex:1;
+
+    min-width:0;
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:17px;
+
+    color:#111827;
+
+}
+
+
+.mobile-search-box input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+
+/* =========================================================
+   RECENT SEARCHES
+   ========================================================= */
+
+#mobileRecentSearches{
+
+    width:100%;
+
+    margin:0 0 30px;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =========================================================
+   MOBILE FILTER LIST
+   ========================================================= */
+
+.mobile-filter-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    width:100%;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.mobile-filter-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    width:100%;
+
+    min-height:72px;
+
+    padding:16px 18px;
+
+    box-sizing:border-box;
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* Hover only on devices that actually support hover */
+
+@media (hover:hover){
+
+    .mobile-filter-card:hover{
+
+        border-color:#2563eb;
+
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.05);
+
+        transform:translateY(-1px);
+
+    }
+
+}
+
+
+/* Touch feedback */
+
+.mobile-filter-card:active{
+
+    transform:scale(.99);
+
+}
+
+
+/* =========================================================
+   FILTER LABEL
+   ========================================================= */
+
+.mobile-filter-card small{
+
+    display:block;
+
+    margin:0 0 6px;
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    line-height:1.2;
+
+}
+
+
+/* =========================================================
+   FILTER VALUE
+   ========================================================= */
+
+.mobile-filter-card strong{
+
+    display:block;
+
+    min-width:0;
+
+    color:#111827;
+
+    font-size:16px;
+
+    line-height:1.3;
+
+    font-weight:600;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   MOBILE SEARCH BUTTON
+   ========================================================= */
+
+.mobile-search-button{
+
+    width:100%;
+
+    min-height:58px;
+
+    height:58px;
+
+    margin-top:35px;
+
+    margin-bottom:20px;
+
+    padding:0 20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-sizing:border-box;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+@media (hover:hover){
+
+    .mobile-search-button:hover{
+
+        background:#1d4ed8;
+
+    }
+
+}
+
+
+.mobile-search-button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================================================
+   MOBILE SEARCH RESULTS
+   ========================================================= */
+
+#mobileSearchResults{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:0 0 30px;
+
+    box-sizing:border-box;
+
+    overflow-x:hidden;
+
+}
+
+
+/* =========================================================
+   MOBILE RESULT CARD
+   ========================================================= */
+
+#mobileSearchResults .search-result{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:14px;
+
+    width:100%;
+
+    min-width:0;
+
+    padding:18px;
+
+    box-sizing:border-box;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    border:1px solid #ececec;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.05);
+
+}
+
+
+/* Prevent result content from causing
+   horizontal overflow */
+
+#mobileSearchResults .result-left{
+
+    min-width:0;
+
+    flex:1;
+
+}
+
+
+#mobileSearchResults .result-content{
+
+    min-width:0;
+
+}
+
+
+#mobileSearchResults .result-title{
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+#mobileSearchResults .result-arrow{
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================================================
+   MOBILE FILTER VISIBILITY
+   ========================================================= */
+
+#mobileFilters{
+
+    display:block;
+
+}
+
+
+#mobileFilters.hide{
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   DESKTOP — HIDE MOBILE SEARCH
+   ========================================================= */
+
+@media (min-width:769px){
+
+    #mobileSearchOverlay{
+
+        display:none;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:768px){
+
+    /* -----------------------------------------
+       Prevent horizontal page movement
+       ----------------------------------------- */
+
+    html,
+    body{
+
+        width:100%;
+
+        max-width:100%;
+
+        overflow-x:hidden;
+
+    }
+
+
+    /* -----------------------------------------
+       Hide desktop search components
+       ----------------------------------------- */
+
+    .recent-search-container{
+
+        display:none !important;
+
+    }
+
+
+    .search-bottom{
+
+        display:none !important;
+
+    }
+
+
+    #searchResults{
+
+        display:none !important;
+
+    }
+
+
+    /* -----------------------------------------
+       Overlay sizing
+       ----------------------------------------- */
+
+    #mobileSearchOverlay{
+
+        width:100%;
+
+        max-width:100%;
+
+        padding:
+            20px
+            16px
+            24px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width:480px){
+
+    #mobileSearchOverlay{
+
+        padding:
+            18px
+            14px
+            22px;
+
+    }
+
+
+    .mobile-search-header{
+
+        gap:12px;
+
+        margin-bottom:22px;
+
+    }
+
+
+    .mobile-search-header button{
+
+        width:40px;
+
+        height:40px;
+
+        min-width:40px;
+
+        font-size:16px;
+
+    }
+
+
+    .mobile-search-header h2{
+
+        font-size:21px;
+
+    }
+
+
+    .mobile-search-box{
+
+        height:56px;
+
+        min-height:56px;
+
+        padding:0 16px;
+
+        gap:12px;
+
+        border-radius:16px;
+
+        margin-bottom:22px;
+
+    }
+
+
+    .mobile-search-box input{
+
+        font-size:16px;
+
+    }
+
+
+    .mobile-filter-list{
+
+        gap:10px;
+
+    }
+
+
+    .mobile-filter-card{
+
+        min-height:68px;
+
+        padding:14px 16px;
+
+        border-radius:16px;
+
+    }
+
+
+    .mobile-filter-card small{
+
+        font-size:12px;
+
+    }
+
+
+    .mobile-filter-card strong{
+
+        font-size:15px;
+
+    }
+
+
+    .mobile-search-button{
+
+        height:56px;
+
+        min-height:56px;
+
+        margin-top:28px;
+
+        font-size:17px;
+
+    }
+
+
+    #mobileSearchResults{
+
+        gap:12px;
+
+        margin-top:24px;
+
+    }
+
+
+    #mobileSearchResults .search-result{
+
+        padding:15px;
+
+        border-radius:16px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width:360px){
+
+    #mobileSearchOverlay{
+
+        padding-left:12px;
+
+        padding-right:12px;
+
+    }
+
+
+    .mobile-search-header h2{
+
+        font-size:19px;
+
+    }
+
+
+    .mobile-search-box{
+
+        padding:0 13px;
+
+    }
+
+
+    .mobile-filter-card{
+
+        padding:13px 14px;
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE SEARCH SUGGESTIONS
+   FIX LAYERING / OVERLAPPING
+========================================== */
+
+@media (max-width: 768px){
+
+    #mobileSearchSuggestions{
+
+        position: relative;
+
+        width: 100%;
+
+        z-index: 100000;
+
+        background: #ffffff;
+
+        margin-top: -10px;
+
+        margin-bottom: 20px;
+
+        display: none;
+
+    }
+
+
+    #mobileSearchSuggestions.active{
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+
+    #mobileSearchSuggestions .suggestion-item{
+
+        position: relative;
+
+        z-index: 100001;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        width: 100%;
+
+        padding: 14px 12px;
+
+        background: #ffffff;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 12px;
+
+        cursor: pointer;
+
+        box-sizing: border-box;
+
+    }
+
+
+    #mobileSearchSuggestions .suggestion-item:hover{
+
+        background: #f8fafc;
+
+    }
+
+
+    #mobileSearchSuggestions .suggestion-item i{
+
+        width: 24px;
+
+        color: #2563eb;
+
+        flex-shrink: 0;
+
+    }
+
+
+    #mobileSearchSuggestions .suggestion-text{
+
+        flex: 1;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        color: #111827;
+
+    }
+
+
+    #mobileSearchSuggestions .suggestion-category{
+
+        font-size: 12px;
+
+        color: #94a3b8;
+
+        white-space: nowrap;
+
+    }
+
+
+    #mobileSearchSuggestions mark{
+
+        background: #dbeafe;
+
+        color: #2563eb;
+
+        border-radius: 3px;
+
+        padding: 1px 2px;
+
+    }
+
+
+    /* --------------------------------------
+       KEEP RECENT SEARCHES BELOW SUGGESTIONS
+    -------------------------------------- */
+
+    #mobileRecentContainer{
+
+        position: relative;
+
+        z-index: 10;
+
+    }
+
+
+    /* --------------------------------------
+       KEEP FILTERS BELOW EVERYTHING ABOVE
+    -------------------------------------- */
+
+    #mobileFilters{
+
+        position: relative;
+
+        z-index: 5;
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE SEARCH STATE CONTROL
+========================================== */
+
+/* Results are hidden by default */
+#mobileSearchResults {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    flex: none;
+    overflow: visible;
+}
+
+
+/* When results are visible */
+#mobileSearchResults.show-results {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* Hide mobile filters when search results are active */
+#mobileFilters.hide {
+    display: none !important;
+}
+
+
+/* Hide results while suggestions are showing */
+#mobileSearchResults.hide-results {
+    display: none !important;
+}
+
+
+/* ==========================================
+   MOBILE RESULT CARD
+========================================== */
+
+#mobileSearchResults .search-result {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+
+    margin: 0;
+}
+
+
+/* Prevent desktop positioning from affecting mobile */
+#mobileSearchResults .result-left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* ==========================================
+   MOBILE EMPTY RESULTS
+========================================== */
+
+#mobileSearchResults .empty-search {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5e7eb;
+}
+
+/* =========================================================
+   MOBILE MORE FILTERS
+   ========================================================= */
+
+/* =========================================================
+   MOBILE MORE FILTERS — CLEAN VERSION
+========================================================= */
+
+@media (max-width:768px){
+
+    /* ==========================================
+       MOBILE FILTER CONTAINER
+    ========================================== */
+
+    #mobileFilters{
+
+        width:100%;
+
+        margin-top:18px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    /* ==========================================
+       MORE FILTER BUTTON
+    ========================================== */
+
+    .mobile-more-filters-toggle{
+
+        width:100%;
+
+        min-height:52px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        margin-top:4px;
+
+        padding:0 16px;
+
+        border:1px solid #e5e7eb;
+
+        border-radius:14px;
+
+        background:#ffffff;
+
+        color:#111827;
+
+        font-family:inherit;
+
+        font-size:15px;
+
+        font-weight:600;
+
+        cursor:pointer;
+
+        box-sizing:border-box;
+
+        transition:
+
+            border-color .2s ease,
+
+            box-shadow .2s ease;
+
+    }
+
+
+    .mobile-more-filters-toggle i{
+
+        font-size:13px;
+
+        transition:
+
+            transform .25s ease;
+
+    }
+
+
+    /* ==========================================
+       OPEN STATE
+    ========================================== */
+
+    #mobileFilters.open
+    .mobile-more-filters-toggle{
+
+        border-color:#2563eb;
+
+        color:#2563eb;
+
+        box-shadow:
+            0 4px 15px rgba(37,99,235,.08);
+
+    }
+
+
+    #mobileFilters.open
+    .mobile-more-filters-toggle i{
+
+        transform:rotate(180deg);
+
+    }
+
+
+    /* ==========================================
+       ADVANCED FILTERS
+    ========================================== */
+
+    #mobileAdvancedFilters{
+
+        display:none;
+
+        width:100%;
+
+        margin-top:12px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    /* ==========================================
+       OPEN
+    ========================================== */
+
+    #mobileFilters.open
+    #mobileAdvancedFilters{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+
+    /* ==========================================
+       ADVANCED FILTER CARD
+    ========================================== */
+
+    #mobileAdvancedFilters
+    .mobile-filter-card{
+
+        width:100%;
+
+        min-height:68px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        align-items:flex-start;
+
+        padding:14px 16px;
+
+        box-sizing:border-box;
+
+        background:#ffffff;
+
+        border:1px solid #e5e7eb;
+
+        border-radius:16px;
+
+        color:#111827;
+
+        font-family:inherit;
+
+        text-align:left;
+
+        cursor:pointer;
+
+        transition:
+
+            border-color .2s ease,
+
+            box-shadow .2s ease;
+
+    }
+
+
+    #mobileAdvancedFilters
+    .mobile-filter-card:hover{
+
+        border-color:#2563eb;
+
+        box-shadow:
+            0 5px 15px rgba(0,0,0,.05);
+
+    }
+
+
+    /* ==========================================
+       LABEL
+    ========================================== */
+
+    #mobileAdvancedFilters
+    .mobile-filter-card small{
+
+        display:block;
+
+        margin-bottom:5px;
+
+        color:#94a3b8;
+
+        font-size:12px;
+
+    }
+
+
+    /* ==========================================
+       VALUE
+    ========================================== */
+
+    #mobileAdvancedFilters
+    .mobile-filter-card strong{
+
+        display:block;
+
+        width:100%;
+
+        color:#111827;
+
+        font-size:15px;
+
+        font-weight:600;
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+
+        white-space:nowrap;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width:480px){
+
+    .mobile-more-filters-toggle{
+
+        min-height:50px;
+
+        font-size:14px;
+
+    }
+
+
+    #mobileAdvancedFilters
+    .mobile-filter-card{
+
+        min-height:64px;
+
+        padding:13px 15px;
+
+        border-radius:15px;
+
+    }
+
+}
+
+/* ==========================================
+   PHASE 6 — STEP 6.3.5
+   MOBILE SEARCH RESULTS VISIBILITY FIX
+========================================== */
+
+@media (max-width: 768px) {
+    #mobileSearchOverlay.active #mobileSearchResults.show-results {
+        display: flex !important;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        min-width: 0;
+        margin-top: 20px;
+        padding: 0 0 30px;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    #mobileSearchOverlay.active #mobileSearchResults.hide-results {
+        display: none !important;
+    }
+
+    #mobileSearchOverlay.active #mobileSearchResults .search-result {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #mobileSearchOverlay.active #mobileSearchResults .result-title {
+        overflow-wrap: anywhere;
+    }
+}
